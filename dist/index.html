@@ -4,13 +4,38 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Overlook Resort</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <header>
+    <h1>Welcome to the Overlook Resort</h1>
+  </header>
+  <nav>
+    <div class="book-stay">
+      <label for="booking-date">Booking Date</label>
+      <input type="date" name="bday" />
+      <p><button>Find Bookings</button></p>
+    </div>
+    <div class="user-info">
+      <img src="./images/cowboy.png" alt="graphic of man in cowboy hat">
+      <p>User name</p>
+      <img src="./images/save-money.png" alt="'graphic of money going into a hand">
+      <p>you've spent $XX, 10% of proceeds go to charity</p>
+      <button>Log Out</button>
+    </div>
+  </nav>
+  <section class="container">
+    <section class="all-reservations">
+      <h3>Need inspiration ? View all Current and Past Reservations</h3>
+      //boxes like in what's cookin g
+    </section>
+    <section class ="filters">
+      <h3>Popular Filters... </h3>
+   </section>
+  <section class="view-all-rooms">
+    <h2>View All Rooms</h2>
+  </section>
+  </section>
   <script src="bundle.js"></script>
-
 </body>
 </html>
