@@ -1,3 +1,71 @@
+* {
+  border: solid black 2px
+}
+
+/* GENERAL */
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  display:flex;
+  flex-direction: column;
+  background: lightgreen;
+}
+
+header{
+  background-color: lightpink;
+  display:flex;
+  justify-content: center;
+  margin:none;
+}
+
+/* NAVIGATION */
+
+nav {
+  display:flex;
+  align-items: end;
+  justify-content: space-between;
+  border:solid black 2px;
+  height: 23vh;
+  width: 100vw;
+  background: lightpink;
+}
+
+img {
+  height:50px;
+  width: 50px; 
+}
+
+.user-info {
+    display: flex;
+    height:20vh;
+    width:20vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.book-stay {
+  display:flex; 
+}
+
+/* MAIN SECTION  */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.all-reservations {
+  height:20vh;
+  width:20vh;
+}
+
+.filters {
+  height: 50vh;
+  width: 50vh;
+}
+
+.view-all-rooms {
+  height: 50vh;
+  width: 50vh;
 }
