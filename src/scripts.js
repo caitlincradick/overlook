@@ -9,6 +9,9 @@ import './images/turing-logo.png'
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
+import { displayCustomer, displayTotalSpent } from './domUpdates';
+import { customersTestData } from './test-data';
+// import { displayCustomer } from './test-data';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -27,5 +30,7 @@ window.addEventListener('load', () => {
     });
   test()
   console.log(savePromises())
+  displayCustomer(customersTestData)
+  displayTotalSpent()
 });
 
