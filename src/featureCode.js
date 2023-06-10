@@ -1,10 +1,11 @@
 // import {bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 
+
 //Functions
-const calculateTotalSpent = (currentCustomer, room, booking) => {
+const calculateTotalSpent = (currentCustomer, rooms, booking) => {
   console.log(currentCustomer)
-  return room.reduce((total, room) => {
+  return rooms.reduce((total, room) => {
     booking.forEach(booking => {
     if(booking.userID === currentCustomer.id && booking.roomNumber === room.number) {
      total += room.costPerNight
@@ -15,9 +16,9 @@ const calculateTotalSpent = (currentCustomer, room, booking) => {
 }
 
 
-const showBookings = (currentCustomer, room, booking) => {
+const showBookings = (currentCustomer, rooms, booking) => {
   return booking.reduce((arr, booking) => {
-    room.forEach(room => {
+    rooms.forEach(room => {
       if(booking.userID === currentCustomer.id && booking.roomNumber === room.number) {
       const obj = {date: booking.date, roomNumber: booking.roomNumber, roomType: room.roomType, cost:   
       room.costPerNight }
@@ -31,9 +32,9 @@ const showBookings = (currentCustomer, room, booking) => {
 }
 
 
-const showAvailableRooms = (todayDate, room, booking) => {
+const showAvailableRooms = (todayDate, rooms, booking) => {
   return booking.reduce((arr, booking) => {
-      room.forEach(availRoom => {
+      rooms.forEach(availRoom => {
         if(booking.date === todayDate && booking.roomNumber === availRoom.number) {
        arr.push(availRoom)
         }
@@ -42,10 +43,10 @@ const showAvailableRooms = (todayDate, room, booking) => {
   }, [])
   }
 
-  const filterAvailableRooms = (todayDate, roomType) => {
+  const filterAvailableRooms = (todayDate, roomType, rooms, booking) => {
     let available = false 
-    return bookingsTestData.reduce((arr, booking) => {
-        roomsTestData.forEach(room => {
+    return booking.reduce((arr, booking) => {
+        rooms.forEach(room => {
           if(booking.date === todayDate && booking.roomNumber === room.number && room.roomType === roomType) {
          arr.push(room)
         available = true 
@@ -59,12 +60,28 @@ const showAvailableRooms = (todayDate, room, booking) => {
     }, []) 
     }
     
-
+    const getTodayDate = () => {
+      const date = new Date();
+      let day = new Date().getDate();
+      let month = date.getMonth() + 1
+      let year = date.getFullYear()
+      let currentDate;
+      let numString  = day.toString()
+      
+        if(numString.length === 1){
+           currentDate =`${year}/${month}/0${day}`
+        } else {
+          currentDate =`${year}/${month}/${day}`  
+        }
+          return currentDate
+    }
 
 
 export {
   calculateTotalSpent, 
   showBookings,
   showAvailableRooms, 
-  filterAvailableRooms
+  filterAvailableRooms, 
+  getTodayDate, 
+  // currentDate
 }
