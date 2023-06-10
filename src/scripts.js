@@ -37,7 +37,7 @@ window.addEventListener('load', () => {
   showBookings(customersTestData[4],roomsTestData, bookingsTestData)
   displayAllBookings(customersTestData[4],roomsTestData, bookingsTestData)
   showAllFilters(roomsTestData)
-  displayAllFilters(roomsTestData)
+  // displayAllFilters(roomsTestData)
 });
 
 
@@ -48,13 +48,13 @@ window.addEventListener('load', () => {
 //   })
 // })
 
-document.addEventListener('click', function(event) {
-  if (event.target.matches('.filter-btns')) {
-    console.log('dang')
-    clearView()
+// document.addEventListener('click', function(event) {
+//   if (event.target.matches('.filter-btns')) {
+//     console.log('dang')
+//     clearView()
     
-  }
-});
+//   }
+// });
   
   findBookingsButton.addEventListener('click', () => {
     console.log('sup')
