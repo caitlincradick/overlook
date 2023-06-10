@@ -10,31 +10,37 @@
   <title>Overlook Resort</title>
 </head>
 <body>
-  <header>
-    <h1>Welcome to the Overlook Hotel</h1>
-  </header>
   <nav>
+    <h1>Welcome to the Overlook Hotel</h1>
     <div class="user-info">
       <img src="./images/cowboy.png" alt="graphic of man in cowboy hat">
       <p class ='customer-name'>User name</p>
-      <img src="./images/save-money.png" alt="'graphic of money going into a hand">
-      <p class="total-spent">You've spent $XX, 10% of proceeds go to restoring the Overlook Hotel</p>
+      <img src="./images/save-money.png"  alt="'graphic of money going into a hand" style="float: left;">
+      <p class="total-spent">You've spent $XX at the Overlook Hotel</p>
       <button class="log-out">Log Out</button>
     </div>
   </nav>
   <section class="container">
-    <section class="all-reservations">
-      <h3>Need inspiration ? View all Current and Past Reservations</h3>
-      //boxes like in what's cookin g
-    </section>
+    <div class="view-book-filter-container">
+   
     <div class="book-stay">
-      <label for="booking-date">Booking Date</label>
-      <input type="date" name="bday" />
+      <label for="booking-date">Booking Date:</label>
+      <input type="date" id='booking-calendar' name="booking-calendar" value=`${formatTodayDate}` min=`${formatTodayDate}`/>
       <p><button class="find-button">Find Bookings</button></p>
     </div>
     <section class ="filters">
       <h3>Filter Rooms</h3>
+       <button class="filter-btn" id="residential-btn">Residential Suite</button>
+       <button class="filter-btn" id="suite-btn">Suite</button>
+       <button class="filter-btn" id="single-room">Single Room</button>
+       <button class="filter-btn" id="junior-suite">Junior Suite</button>
    </section>
+    <section class="all-reservations">
+      <div class='all-reservations-container'>
+      <h3 class="reservations-header">Need inspiration ? View all Current and Past Reservations:</h3>
+    </div>
+    </section>
+   </div>
   <section class="view-all-rooms">
     <h2>View All Rooms</h2>
   </section>

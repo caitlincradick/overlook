@@ -5,7 +5,7 @@
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// import './dist/images/water-image.jpg'
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
@@ -37,7 +37,7 @@ window.addEventListener('load', () => {
   showBookings(customersTestData[4],roomsTestData, bookingsTestData)
   displayAllBookings(customersTestData[4],roomsTestData, bookingsTestData)
   showAllFilters(roomsTestData)
-  displayAllFilters(roomsTestData)
+  // displayAllFilters(roomsTestData)
 });
 
 
@@ -48,13 +48,13 @@ window.addEventListener('load', () => {
 //   })
 // })
 
-document.addEventListener('click', function(event) {
-  if (event.target.matches('.filter-btns')) {
-    console.log('dang')
-    clearView()
+// document.addEventListener('click', function(event) {
+//   if (event.target.matches('.filter-btns')) {
+//     console.log('dang')
+//     clearView()
     
-  }
-});
+//   }
+// });
   
   findBookingsButton.addEventListener('click', () => {
     console.log('sup')
