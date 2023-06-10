@@ -2,26 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Overlook Resort</title>
 </head>
 <body>
   <header>
-    <h1>Welcome to the Overlook Resort</h1>
+    <h1>Welcome to the Overlook Hotel</h1>
   </header>
   <nav>
-    <div class="book-stay">
-      <label for="booking-date">Booking Date</label>
-      <input type="date" name="bday" />
-      <p><button>Find Bookings</button></p>
-    </div>
     <div class="user-info">
       <img src="./images/cowboy.png" alt="graphic of man in cowboy hat">
-      <p>User name</p>
+      <p class ='customer-name'>User name</p>
       <img src="./images/save-money.png" alt="'graphic of money going into a hand">
-      <p>you've spent $XX, 10% of proceeds go to charity</p>
-      <button>Log Out</button>
+      <p class="total-spent">You've spent $XX, 10% of proceeds go to restoring the Overlook Hotel</p>
+      <button class="log-out">Log Out</button>
     </div>
   </nav>
   <section class="container">
@@ -29,8 +27,13 @@
       <h3>Need inspiration ? View all Current and Past Reservations</h3>
       //boxes like in what's cookin g
     </section>
+    <div class="book-stay">
+      <label for="booking-date">Booking Date</label>
+      <input type="date" name="bday" />
+      <p><button class="find-button">Find Bookings</button></p>
+    </div>
     <section class ="filters">
-      <h3>Popular Filters... </h3>
+      <h3>Filter Rooms</h3>
    </section>
   <section class="view-all-rooms">
     <h2>View All Rooms</h2>

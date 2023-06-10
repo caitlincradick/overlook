@@ -1,5 +1,6 @@
 * {
-  border: solid black 2px
+  border: solid black 2px;
+  font-family: 'Raleway', sans-serif;
 }
 
 /* GENERAL */
@@ -24,7 +25,7 @@ nav {
   align-items: end;
   justify-content: space-between;
   border:solid black 2px;
-  height: 23vh;
+  height: 20vh;
   width: 100vw;
   background: lightpink;
 }
