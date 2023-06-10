@@ -86,6 +86,8 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
       return filterArray
     }
 
+
+
 export {
   calculateTotalSpent, 
   showBookings,

@@ -9,9 +9,9 @@ import './images/turing-logo.png'
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters } from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton } from './domUpdates';
 import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
-import { getTodayDate, showAllFilters } from './featureCode';
+import { getTodayDate, showAllFilters, showBookings } from './featureCode';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -22,19 +22,38 @@ let bookings;
 //Event Listeners 
 window.addEventListener('load', () => {
   savePromises()
-    .then(data => {
-      customers = data[0].customers;
-      rooms = data[1].rooms;
-      bookings = data[2].bookings;
-      console.log(customers)
-    });
-  test()
+  .then(data => {
+    customers = data[0].customers;
+    rooms = data[1].rooms;
+    bookings = data[2].bookings;
+    console.log(customers)
+  });
+  // test()
   console.log(savePromises())
   displayCustomer(customersTestData)
   displayTotalSpent(customersTestData[4], roomsTestData, bookingsTestData)
   console.log('today date', getTodayDate())
   displayAvailableRooms('2022/04/22',roomsTestData, bookingsTestData)
+  showBookings(customersTestData[4],roomsTestData, bookingsTestData)
+  displayAllBookings(customersTestData[4],roomsTestData, bookingsTestData)
   showAllFilters(roomsTestData)
   displayAllFilters(roomsTestData)
 });
 
+
+// console.log('buttons', filterButtons)
+// filterButtons.forEach(filterBtn => {
+//   filterBtn.addEventListener('mousedown', () => {
+//    console.log('dang')
+//   })
+// })
+
+document.addEventListener('click', function(event) {
+  if (event.target.matches('.filter-btns')) {
+    console.log('dang')
+  }
+});
+  
+  findBookingsButton.addEventListener('click', () => {
+    console.log('sup')
+  })

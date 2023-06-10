@@ -1,11 +1,18 @@
-import { calculateTotalSpent, showAvailableRooms, showAllFilters } from "./featureCode";
+import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings } from "./featureCode";
 import { bookingsTestData, roomsTestData } from './test-data';
 
 //Global Variables
 const customerName = document.querySelector('.customer-name');
 const totalSpent = document.querySelector('.total-spent');
 const viewRooms = document.querySelector('.view-all-rooms');
-const filters = document.querySelector('.filters')
+const filters = document.querySelector('.filters');
+const bookingsView = document.querySelector('.all-reservations')
+const filterButtons = document.querySelectorAll('.filter-btns')
+const logOutButton = document.querySelector('.log-out')
+const findBookingsButton = document.querySelector('.find-button')
+
+
+console.log('buttons', filterButtons)
 
 const displayCustomer = (customer) => {
   customer.forEach(customer => {
@@ -36,15 +43,22 @@ viewRooms.innerHTML += `
 })
 }
 
+
 const displayAllFilters = (rooms) => {
 const allFilters = showAllFilters(rooms);
  allFilters.forEach(filter =>  {
-  filters.innerHTML += `<button class="tag" id="${filter}">${filter}</button>`
- });
+  filters.innerHTML += `<button class="filter-btns" id="${filter}">${filter}</button>`
+});
 }
 
-const displayAllBookings = () => {
 
+const displayAllBookings = (currentCustomer, rooms, booking) => {
+const bookings = showBookings(currentCustomer, rooms, booking)
+bookings.forEach(book => {
+bookingsView.innerHTML += `
+<p class='booking-date'> ${book.date}</p>
+`
+})
 }
 
 
@@ -52,5 +66,10 @@ export {
   displayCustomer, 
   displayTotalSpent, 
   displayAvailableRooms, 
-  displayAllFilters 
+  displayAllFilters, 
+  displayAllBookings, 
+  filterButtons, 
+  logOutButton, 
+  findBookingsButton,
+  filters
 }
