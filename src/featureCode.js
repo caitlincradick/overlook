@@ -76,6 +76,12 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
           return currentDate
     }
 
+    const formatTodayDate = () => {
+      const date = getTodayDate() 
+      let formattedDate = date.split('/').join('-')
+      return formattedDate
+        }
+
     const showAllFilters = (rooms) => {
       let filterArray = []
       rooms.forEach(room => {
@@ -94,6 +100,7 @@ export {
   showAvailableRooms, 
   filterAvailableRooms, 
   getTodayDate, 
-  showAllFilters
+  showAllFilters, 
+  formatTodayDate
   // currentDate
 }
