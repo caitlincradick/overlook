@@ -9,9 +9,9 @@ import './images/turing-logo.png'
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
-import { displayCustomer, displayTotalSpent } from './domUpdates';
-import { customersTestData } from './test-data';
-// import { displayCustomer } from './test-data';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms } from './domUpdates';
+import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
+import { getTodayDate } from './featureCode';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -31,6 +31,8 @@ window.addEventListener('load', () => {
   test()
   console.log(savePromises())
   displayCustomer(customersTestData)
-  displayTotalSpent()
+  displayTotalSpent(customersTestData[4], roomsTestData, bookingsTestData)
+  console.log('today date', getTodayDate())
+  displayAvailableRooms('2022/04/22',roomsTestData, bookingsTestData)
 });
 
