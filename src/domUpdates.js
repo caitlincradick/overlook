@@ -1,4 +1,4 @@
-import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings, filterAvailableRooms } from "./featureCode";
+import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings, filterAvailableRooms, getTodayDate } from "./featureCode";
 import { bookingsTestData, roomsTestData } from './test-data';
 
 //Global Variables
@@ -10,9 +10,8 @@ const bookingsView = document.querySelector('.all-reservations')
 // const filterButtons = document.querySelectorAll('.filter-btns')
 const logOutButton = document.querySelector('.log-out')
 const findBookingsButton = document.querySelector('.find-button')
+const calendarInput = document.getElementById('booking-calendar')
 
-
-// console.log('buttons', filterButtons)
 
 const displayCustomer = (customer) => {
   customer.forEach(customer => {
@@ -76,6 +75,10 @@ const clearView = () => {
  availableByFilter.forEach(availRoom => console.log(availRoom))
 }
 
+const setCalendarAttributes = () => {
+  let today =  getTodayDate()
+  calendarInput.setAttribute("min", today)
+}
 
 export {
   displayCustomer, 
@@ -87,5 +90,6 @@ export {
   logOutButton, 
   findBookingsButton,
   filters, 
-  clearView
+  clearView, 
+  setCalendarAttributes
 }

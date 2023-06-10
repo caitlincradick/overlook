@@ -9,12 +9,11 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, clearView } from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes} from './domUpdates';
 import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms } from './featureCode';
 
-console.log('This is the JavaScript entry file - your code begins here.');
-
+console.log('This is the JavaScript entry file - your code begins here.'); 
 let customers;
 let rooms;
 let bookings;
@@ -37,6 +36,7 @@ window.addEventListener('load', () => {
   showBookings(customersTestData[4],roomsTestData, bookingsTestData)
   displayAllBookings(customersTestData[4],roomsTestData, bookingsTestData)
   showAllFilters(roomsTestData)
+  setCalendarAttributes()
   // displayAllFilters(roomsTestData)
 });
 
