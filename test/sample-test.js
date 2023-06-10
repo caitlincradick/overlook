@@ -52,20 +52,28 @@ describe('showAvailableRooms', () => {
     const availableRooms = showAvailableRooms('2022/04/22',roomsTestData, bookingsTestData)
     expect(availableRooms).to.deep.equal([
       {
-        number: 1,
-        roomType: 'residential suite',
-        bidet: true,
-        bedSize: 'queen',
+        number: 3,
+        roomType: 'single room',
+        bidet: false,
+        bedSize: 'king',
         numBeds: 1,
-        costPerNight: 358.4
+        costPerNight: 491.14
       },
       {
-        number: 2,
-        roomType: 'suite',
+        number: 4,
+        roomType: 'single room',
         bidet: false,
-        bedSize: 'full',
+        bedSize: 'queen',
+        numBeds: 1,
+        costPerNight: 429.44
+      },
+      {
+        number: 5,
+        roomType: 'single room',
+        bidet: true,
+        bedSize: 'queen',
         numBeds: 2,
-        costPerNight: 477.38
+        costPerNight: 340.17
       }
     ])
   });
@@ -76,7 +84,7 @@ describe('filterAvailableRooms', () => {
     expect(filterAvailableRooms).to.be.a('function');
   });
   it('Should show all available rooms by filter', () => {
-    const showAvailableRooms = filterAvailableRooms('2022/04/22', 'residential suite', roomsTestData, bookingsTestData )
+    const showAvailableRooms = filterAvailableRooms('2022/04/07', 'residential suite', roomsTestData, bookingsTestData )
     expect(showAvailableRooms).to.deep.equal([
       {
         number: 1,
@@ -89,7 +97,7 @@ describe('filterAvailableRooms', () => {
     ]);
 }); 
 it('Should display message if there are no rooms available', () => {
-  const showAvailableRooms = filterAvailableRooms('2022/04/12', 'residential suite', roomsTestData, bookingsTestData )
+  const showAvailableRooms = filterAvailableRooms('2022/04/22', 'residential suite', roomsTestData, bookingsTestData )
   expect(showAvailableRooms).to.be.equal(`Room is unavailabe, please adjust your search!`);
 });
 });

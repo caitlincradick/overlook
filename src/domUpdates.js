@@ -61,7 +61,11 @@ const displayAllBookings = (currentCustomer, rooms, booking) => {
 const bookings = showBookings(currentCustomer, rooms, booking)
 bookings.forEach(book => {
 bookingsView.innerHTML += `
-<p class='booking-date'> ${book.date}</p>
+<div class='individual-reservation-container'>
+<p class='reserved-date'>Date: ${book.date}</p>
+<p class= 'reserved-type'>Room: ${book.roomType}, # ${book.roomNumber}</p>
+<p class='reserved-cost'> Cost: ${book.cost}</p>
+</div>
 `
 })
 }

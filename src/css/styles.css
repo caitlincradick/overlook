@@ -60,9 +60,22 @@ img {
 }
 
 .all-reservations {
+  display: flex;
+  flex-direction: column;
+ align-items: center;
   height:40vh;
   width:28vw;
-  border:red solid
+  border:black 2px;
+  background-color: #f0f0f0;
+}
+
+.individual-reservation-container{
+  height: 7vh; 
+  width:15vw;
+  border:solid black 2px;
+  background-color: rgb(150, 246, 241);
+  margin-top: 3%;
+
 }
 
 .filters {
@@ -109,7 +122,7 @@ h1 {
 }
 
 .all-reservations-container {
-  border:solid black 1px; 
+  background-color: azure;
 }
 
 .book-stay {
