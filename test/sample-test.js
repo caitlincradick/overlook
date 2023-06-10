@@ -76,7 +76,7 @@ describe('filterAvailableRooms', () => {
     expect(filterAvailableRooms).to.be.a('function');
   });
   it('Should show all available rooms by filter', () => {
-    const showAvailableRooms = filterAvailableRooms('2022/04/22', 'residential suite')
+    const showAvailableRooms = filterAvailableRooms('2022/04/22', 'residential suite', roomsTestData, bookingsTestData )
     expect(showAvailableRooms).to.deep.equal([
       {
         number: 1,
@@ -89,7 +89,7 @@ describe('filterAvailableRooms', () => {
     ]);
 }); 
 it('Should display message if there are no rooms available', () => {
-  const showAvailableRooms = filterAvailableRooms('2022/04/12', 'residential suite')
+  const showAvailableRooms = filterAvailableRooms('2022/04/12', 'residential suite', roomsTestData, bookingsTestData )
   expect(showAvailableRooms).to.be.equal(`Room is unavailabe, please adjust your search!`);
 });
 });

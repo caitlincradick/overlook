@@ -76,6 +76,15 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
           return currentDate
     }
 
+    const showAllFilters = (rooms) => {
+      let filterArray = []
+      rooms.forEach(room => {
+        if(!filterArray.includes(room.roomType)){
+        filterArray.push(room.roomType)
+        }
+      })
+      return filterArray
+    }
 
 export {
   calculateTotalSpent, 
@@ -83,5 +92,6 @@ export {
   showAvailableRooms, 
   filterAvailableRooms, 
   getTodayDate, 
+  showAllFilters
   // currentDate
 }
