@@ -23,7 +23,7 @@ const displayCustomer = (customer) => {
 const displayTotalSpent = (currentCustomer, rooms, booking) => {
  let totalAmount =  calculateTotalSpent(currentCustomer, rooms, booking)
  console.log(totalAmount)
-totalSpent.innerText = `You've spent $${totalAmount}, 10% of proceeds go to restoring the Overlook Hotel`
+totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
 //going to need to have the ID in there for selecting it !!!!!! 
