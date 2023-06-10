@@ -1,4 +1,4 @@
-import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings } from "./featureCode";
+import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings, filterAvailableRooms } from "./featureCode";
 import { bookingsTestData, roomsTestData } from './test-data';
 
 //Global Variables
@@ -51,7 +51,6 @@ const allFilters = showAllFilters(rooms);
 });
 }
 
-
 const displayAllBookings = (currentCustomer, rooms, booking) => {
 const bookings = showBookings(currentCustomer, rooms, booking)
 bookings.forEach(book => {
@@ -59,6 +58,12 @@ bookingsView.innerHTML += `
 <p class='booking-date'> ${book.date}</p>
 `
 })
+}
+
+const clearView = () => {
+  viewRooms.innerHTML = ''
+ const availableByFilter = filterAvailableRooms('2022/04/22', 'residential suite', roomsTestData, bookingsTestData)
+ availableByFilter.forEach(availRoom => console.log(availRoom))
 }
 
 
@@ -71,5 +76,6 @@ export {
   filterButtons, 
   logOutButton, 
   findBookingsButton,
-  filters
+  filters, 
+  clearView
 }

@@ -9,9 +9,9 @@ import './images/turing-logo.png'
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton } from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, clearView } from './domUpdates';
 import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
-import { getTodayDate, showAllFilters, showBookings } from './featureCode';
+import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms } from './featureCode';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -51,6 +51,8 @@ window.addEventListener('load', () => {
 document.addEventListener('click', function(event) {
   if (event.target.matches('.filter-btns')) {
     console.log('dang')
+    clearView()
+    
   }
 });
   
