@@ -11,12 +11,7 @@ body {
   background: lightgreen;
 }
 
-header{
-  background-color: lightpink;
-  display:flex;
-  justify-content: center;
-  margin:none;
-}
+
 
 /* NAVIGATION */
 
