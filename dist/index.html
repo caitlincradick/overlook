@@ -25,13 +25,13 @@
    
     <div class="book-stay">
       <label for="booking-date">Booking Date:</label>
-      <input type="date" id='booking-calendar' name="booking-calendar" value=`${formatTodayDate}` min=`${formatTodayDate}`/>
+      <input type="date" id='booking-calendar' name="booking-calendar" max="2024-1-9" required/>
       <p><button class="find-button">Find Bookings</button></p>
     </div>
     <section class ="filters">
       <h3>Filter Rooms</h3>
-       <button class="filter-btn" id="residential-btn">Residential Suite</button>
-       <button class="filter-btn" id="suite-btn">Suite</button>
+       <button class="filter-btn" id="residential-suite">Residential Suite</button>
+       <button class="filter-btn" id="suite">Suite</button>
        <button class="filter-btn" id="single-room">Single Room</button>
        <button class="filter-btn" id="junior-suite">Junior Suite</button>
    </section>
@@ -42,7 +42,7 @@
     </section>
    </div>
   <section class="view-all-rooms">
-    <h2>View All Rooms</h2>
+    <!-- <h2>View All Rooms</h2> -->
   </section>
   </section>
   <script src="bundle.js"></script>

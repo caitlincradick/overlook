@@ -1,4 +1,4 @@
-import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings, filterAvailableRooms } from "./featureCode";
+import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings, filterAvailableRooms, getTodayDate } from "./featureCode";
 import { bookingsTestData, roomsTestData } from './test-data';
 
 //Global Variables
@@ -7,12 +7,11 @@ const totalSpent = document.querySelector('.total-spent');
 const viewRooms = document.querySelector('.view-all-rooms');
 const filters = document.querySelector('.filters');
 const bookingsView = document.querySelector('.all-reservations')
-// const filterButtons = document.querySelectorAll('.filter-btns')
+const filterButtons = document.querySelectorAll('.filter-btn')
 const logOutButton = document.querySelector('.log-out')
-const findBookingsButton = document.querySelector('.find-button')
+const findBookingsButton = document.querySelector('.find-button') 
+const calendarInput = document.getElementById('booking-calendar')
 
-
-// console.log('buttons', filterButtons)
 
 const displayCustomer = (customer) => {
   customer.forEach(customer => {
@@ -28,8 +27,10 @@ totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 
 //going to need to have the ID in there for selecting it !!!!!! 
 const displayAvailableRooms = () => {
-const roomInfo = showAvailableRooms ('2022/04/22',roomsTestData, bookingsTestData) 
-console.log('roominfo', roomInfo)
+let dateValue = calendarInput.value.split('-').join('/')
+const roomInfo = showAvailableRooms (dateValue, roomsTestData, bookingsTestData) 
+console.log('DISPLAYroominfo', roomInfo)
+viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
 viewRooms.innerHTML += `
 <section class = 'room-display-container'>
@@ -40,20 +41,34 @@ viewRooms.innerHTML += `
  <p class='num-beds'>Number of Beds:${room.numBeds}</p>
  <p class='cost'> Cost per Night: $${room.costPerNight}</p>
  <p class='bidet'> This room has a bidet: ${room.bidet} </p>
+ <button class='book-room'> Book Room </button>
  </div>
 `
 })
 }
 
 
-// const displayAllFilters = (rooms) => {
-// const allFilters = showAllFilters(rooms);
-//  allFilters.forEach(filter =>  {
-//   filters.innerHTML += `<button class="filter-btns" id="${filter}">${filter}</button>`
-// });
-// const filterButtons = document.querySelectorAll('.filter-btns')
-// console.log('BUTTTTTONS', filterButtons)
-// }
+const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
+selectedDate = calendarInput.value.split('-').join('/')
+const roomInfo = filterAvailableRooms (selectedDate, roomType, rooms, booking) 
+console.log('FILTERroominfo', roomInfo)
+viewRooms.innerHTML = ''
+roomInfo.forEach(room => {
+viewRooms.innerHTML += `
+<section class = 'room-display-container'>
+<div class='avail-room-container'>
+ <h3 class='room-type'> ${room.roomType}</h3>
+ <p class='room-num'> Room #${room.number} </p>
+ <p class='bed-size'>Bed Size:${room.bedSize} </p>
+ <p class='num-beds'>Number of Beds:${room.numBeds}</p>
+ <p class='cost'> Cost per Night: $${room.costPerNight}</p>
+ <p class='bidet'> This room has a bidet: ${room.bidet} </p>
+ <button class='book-room'> Book Room </button>
+ </div>
+`
+})
+}
+
 
 
 
@@ -70,22 +85,33 @@ bookingsView.innerHTML += `
 })
 }
 
-const clearView = () => {
-  viewRooms.innerHTML = ''
- const availableByFilter = filterAvailableRooms('2022/04/22', 'residential suite', roomsTestData, bookingsTestData)
- availableByFilter.forEach(availRoom => console.log(availRoom))
+
+const setCalendarAttributes = () => {
+  let today =  getTodayDate()
+  calendarInput.setAttribute("min", today)
 }
+
+
+const getInput = () => {
+let bookingDate = calendarInput.value
+console.log('BOOKING DATE', bookingDate)
+return bookingDate
+}
+
+
 
 
 export {
   displayCustomer, 
   displayTotalSpent, 
   displayAvailableRooms, 
-  // displayAllFilters, 
+  displayFilteredRooms, 
   displayAllBookings, 
-  // filterButtons, 
+  filterButtons, 
   logOutButton, 
   findBookingsButton,
   filters, 
-  clearView
+  setCalendarAttributes,
+  getInput,  
+  calendarInput
 }

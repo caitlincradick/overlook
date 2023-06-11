@@ -45,6 +45,7 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
 
   const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
     let available = false 
+    console.log('ROOOOOOOOM TYPPPPPE', roomType)
     return booking.reduce((arr, booking) => {
         rooms.forEach(room => {
           if(booking.date != selectedDate && booking.roomNumber === room.number && room.roomType === roomType) {
@@ -61,26 +62,15 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
     }
     
     const getTodayDate = () => {
-      const date = new Date();
-      let day = new Date().getDate();
-      let month = date.getMonth() + 1
-      let year = date.getFullYear()
-      let currentDate;
-      let numString  = day.toString()
-      
-        if(numString.length === 1){
-           currentDate =`${year}/${month}/0${day}`
-        } else {
-          currentDate =`${year}/${month}/${day}`  
-        }
-          return currentDate
-    }
+      let date = new Date().toJSON().slice(0, 10)
+      return date
+      }
 
+    //data format for date 
     const formatTodayDate = () => {
-      const date = getTodayDate() 
-      let formattedDate = date.split('/').join('-')
-      return formattedDate
-        }
+      let date = new Date().toJSON().slice(0, 10).split('-').join('/')
+          return date
+      }
 
     const showAllFilters = (rooms) => {
       let filterArray = []
