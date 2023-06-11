@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, getInput, calendarInput} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, getInput, calendarInput, displayFilteredRooms} from './domUpdates';
 import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms } from './featureCode';
 
@@ -41,11 +41,13 @@ window.addEventListener('load', () => {
 
 
 // console.log('buttons', filterButtons)
-// filterButtons.forEach(filterBtn => {
-//   filterBtn.addEventListener('mousedown', () => {
-//    console.log('dang')
-//   })
-// })
+filterButtons.forEach(filterBtn => {
+  filterBtn.addEventListener('click', () => {
+    console.log('BUTTTTON', filterBtn.id.split('-').join(' '))
+  filterAvailableRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), roomsTestData, bookingsTestData)
+  displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), roomsTestData, bookingsTestData)
+})
+})
 
 // document.addEventListener('click', function(event) {
 //   if (event.target.matches('.filter-btns')) {
@@ -64,3 +66,4 @@ window.addEventListener('load', () => {
     }
     console.log('sup')
   })
+

@@ -45,6 +45,7 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
 
   const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
     let available = false 
+    console.log('ROOOOOOOOM TYPPPPPE', roomType)
     return booking.reduce((arr, booking) => {
         rooms.forEach(room => {
           if(booking.date != selectedDate && booking.roomNumber === room.number && room.roomType === roomType) {

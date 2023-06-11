@@ -41,20 +41,34 @@ viewRooms.innerHTML += `
  <p class='num-beds'>Number of Beds:${room.numBeds}</p>
  <p class='cost'> Cost per Night: $${room.costPerNight}</p>
  <p class='bidet'> This room has a bidet: ${room.bidet} </p>
+ <button class='book-room'> Book Room </button>
  </div>
 `
 })
 }
 
 
-// const displayAllFilters = (rooms) => {
-// const allFilters = showAllFilters(rooms);
-//  allFilters.forEach(filter =>  {
-//   filters.innerHTML += `<button class="filter-btns" id="${filter}">${filter}</button>`
-// });
-// const filterButtons = document.querySelectorAll('.filter-btns')
-// console.log('BUTTTTTONS', filterButtons)
-// }
+const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
+selectedDate = calendarInput.value.split('-').join('/')
+const roomInfo = filterAvailableRooms (selectedDate, roomType, rooms, booking) 
+console.log('FILTERroominfo', roomInfo)
+viewRooms.innerHTML = ''
+roomInfo.forEach(room => {
+viewRooms.innerHTML += `
+<section class = 'room-display-container'>
+<div class='avail-room-container'>
+ <h3 class='room-type'> ${room.roomType}</h3>
+ <p class='room-num'> Room #${room.number} </p>
+ <p class='bed-size'>Bed Size:${room.bedSize} </p>
+ <p class='num-beds'>Number of Beds:${room.numBeds}</p>
+ <p class='cost'> Cost per Night: $${room.costPerNight}</p>
+ <p class='bidet'> This room has a bidet: ${room.bidet} </p>
+ <button class='book-room'> Book Room </button>
+ </div>
+`
+})
+}
+
 
 
 
@@ -71,11 +85,6 @@ bookingsView.innerHTML += `
 })
 }
 
-const clearView = () => {
-  viewRooms.innerHTML = ''
- const availableByFilter = filterAvailableRooms('2022/04/22', 'residential suite', roomsTestData, bookingsTestData)
- availableByFilter.forEach(availRoom => console.log(availRoom))
-}
 
 const setCalendarAttributes = () => {
   let today =  getTodayDate()
@@ -90,22 +99,18 @@ return bookingDate
 }
 
 
-const createFilterBtnIds = () => {
-  
-}
 
 
 export {
   displayCustomer, 
   displayTotalSpent, 
   displayAvailableRooms, 
-  // displayAllFilters, 
+  displayFilteredRooms, 
   displayAllBookings, 
-  // filterButtons, 
+  filterButtons, 
   logOutButton, 
   findBookingsButton,
   filters, 
-  clearView, 
   setCalendarAttributes,
   getInput,  
   calendarInput
