@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, getInput, calendarInput, displayFilteredRooms} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, getInput, calendarInput, displayFilteredRooms, showFilterSection} from './domUpdates';
 import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms } from './featureCode';
 
@@ -63,6 +63,7 @@ filterButtons.forEach(filterBtn => {
     } else {
     getInput()
     displayAvailableRooms(calendarInput.value.split('-').join('/'),roomsTestData, bookingsTestData)
+    showFilterSection()
     }
     console.log('sup')
   })

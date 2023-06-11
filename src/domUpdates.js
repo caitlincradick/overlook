@@ -12,6 +12,18 @@ const logOutButton = document.querySelector('.log-out')
 const findBookingsButton = document.querySelector('.find-button') 
 const calendarInput = document.getElementById('booking-calendar')
 
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+const showFilterSection = () => {
+  show(filters)
+}
+
 
 const displayCustomer = (customer) => {
   customer.forEach(customer => {
@@ -113,5 +125,6 @@ export {
   filters, 
   setCalendarAttributes,
   getInput,  
-  calendarInput
+  calendarInput, 
+  showFilterSection
 }
