@@ -10,7 +10,7 @@ import './css/styles.css';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, test} from './apiCalls';
 import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, getInput, calendarInput, displayFilteredRooms, showFilterSection} from './domUpdates';
-import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
+// import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms } from './featureCode';
 
 console.log('This is the JavaScript entry file - your code begins here.'); 
@@ -25,44 +25,34 @@ window.addEventListener('load', () => {
     customers = data[0].customers;
     rooms = data[1].rooms;
     bookings = data[2].bookings;
-    console.log(customers)
+    console.log(customers[4])
+    // getCurrentCustomer(customers[4])
+    displayCustomer(customers[4])
+    showBookings(customers,rooms, bookings)
+    displayTotalSpent(customers[4], rooms, bookings)
+    displayAllBookings(customers,rooms, bookings)
+    showAllFilters(rooms)
   });
-  // test()
-  console.log(savePromises())
-  displayCustomer(customersTestData)
-  displayTotalSpent(customersTestData[4], roomsTestData, bookingsTestData)
-  console.log('today date', getTodayDate())
-  showBookings(customersTestData[4],roomsTestData, bookingsTestData)
-  displayAllBookings(customersTestData[4],roomsTestData, bookingsTestData)
-  showAllFilters(roomsTestData)
   setCalendarAttributes()
-  // displayAllFilters(roomsTestData)
+  
 });
 
 
-// console.log('buttons', filterButtons)
 filterButtons.forEach(filterBtn => {
   filterBtn.addEventListener('click', () => {
     console.log('BUTTTTON', filterBtn.id.split('-').join(' '))
-  filterAvailableRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), roomsTestData, bookingsTestData)
-  displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), roomsTestData, bookingsTestData)
+  filterAvailableRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
+  displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
 })
 })
 
-// document.addEventListener('click', function(event) {
-//   if (event.target.matches('.filter-btns')) {
-//     console.log('dang')
-//     clearView()
-    
-//   }
-// });
-  
+ 
   findBookingsButton.addEventListener('click', () => {
     if(!calendarInput.value){
       alert('Please select a date!')
     } else {
     getInput()
-    displayAvailableRooms(calendarInput.value.split('-').join('/'),roomsTestData, bookingsTestData)
+    displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
     showFilterSection()
     }
     console.log('sup')

@@ -26,13 +26,12 @@ const showFilterSection = () => {
 
 
 const displayCustomer = (customer) => {
-  customer.forEach(customer => {
     customerName.innerText = customer.name
-  })
 };
 
 const displayTotalSpent = (currentCustomer, rooms, booking) => {
  let totalAmount =  calculateTotalSpent(currentCustomer, rooms, booking)
+ console.log('currentCustomer', currentCustomer)
  console.log(totalAmount)
 totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }

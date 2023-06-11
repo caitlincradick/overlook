@@ -1,10 +1,12 @@
 // import {bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 
+// const getCurrentCustomer = customers => Math.floor(Math.random() * customers.length);
 
 //Functions
 const calculateTotalSpent = (currentCustomer, rooms, booking) => {
-  console.log(currentCustomer)
+  // currentCustomer = getCurrentCustomer(currentCustomer)
+  console.log("currentCUstomer",currentCustomer)
   return rooms.reduce((total, room) => {
     booking.forEach(booking => {
     if(booking.userID === currentCustomer.id && booking.roomNumber === room.number) {
@@ -91,6 +93,7 @@ export {
   filterAvailableRooms, 
   getTodayDate, 
   showAllFilters, 
-  formatTodayDate
+  formatTodayDate, 
+  // getCurrentCustomer
   // currentDate
 }
