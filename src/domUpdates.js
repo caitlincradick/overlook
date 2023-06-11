@@ -37,9 +37,9 @@ totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
 //going to need to have the ID in there for selecting it !!!!!! 
-const displayAvailableRooms = () => {
-let dateValue = calendarInput.value.split('-').join('/')
-const roomInfo = showAvailableRooms (dateValue, roomsTestData, bookingsTestData) 
+const displayAvailableRooms = (todayDate, rooms, booking) => {
+// let dateValue = calendarInput.value.split('-').join('/')
+const roomInfo = showAvailableRooms (todayDate, rooms, booking) 
 console.log('DISPLAYroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {

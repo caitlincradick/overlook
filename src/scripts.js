@@ -11,7 +11,7 @@ import './css/styles.css';
 import {savePromises, test} from './apiCalls';
 import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, getInput, calendarInput, displayFilteredRooms, showFilterSection} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
-import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms } from './featureCode';
+import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms, showAvailableRooms } from './featureCode';
 
 console.log('This is the JavaScript entry file - your code begins here.'); 
 let customers;
@@ -28,9 +28,9 @@ window.addEventListener('load', () => {
     console.log(customers[4])
     // getCurrentCustomer(customers[4])
     displayCustomer(customers[4])
-    showBookings(customers,rooms, bookings)
+    showBookings(customers[4],rooms, bookings)
     displayTotalSpent(customers[4], rooms, bookings)
-    displayAllBookings(customers,rooms, bookings)
+    displayAllBookings(customers[4],rooms, bookings)
     showAllFilters(rooms)
   });
   setCalendarAttributes()
@@ -52,6 +52,7 @@ filterButtons.forEach(filterBtn => {
       alert('Please select a date!')
     } else {
     getInput()
+    // showAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
     displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
     showFilterSection()
     }
