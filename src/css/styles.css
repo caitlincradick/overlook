@@ -89,6 +89,9 @@ img {
 }
 
 .view-all-rooms {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   height: 70vh;
   width: 60vw;
 }
@@ -96,6 +99,7 @@ img {
 display: flex;
 justify-content: center;
 align-items: space-evenly;
+flex-wrap: wrap;
 }
 
 .avail-room-container {

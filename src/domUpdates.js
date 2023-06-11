@@ -7,9 +7,9 @@ const totalSpent = document.querySelector('.total-spent');
 const viewRooms = document.querySelector('.view-all-rooms');
 const filters = document.querySelector('.filters');
 const bookingsView = document.querySelector('.all-reservations')
-// const filterButtons = document.querySelectorAll('.filter-btns')
+const filterButtons = document.querySelectorAll('.filter-btn')
 const logOutButton = document.querySelector('.log-out')
-const findBookingsButton = document.querySelector('.find-button')
+const findBookingsButton = document.querySelector('.find-button') 
 const calendarInput = document.getElementById('booking-calendar')
 
 
@@ -27,8 +27,10 @@ totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 
 //going to need to have the ID in there for selecting it !!!!!! 
 const displayAvailableRooms = () => {
-const roomInfo = showAvailableRooms ('2022/04/22',roomsTestData, bookingsTestData) 
-console.log('roominfo', roomInfo)
+let dateValue = calendarInput.value.split('-').join('/')
+const roomInfo = showAvailableRooms (dateValue, roomsTestData, bookingsTestData) 
+console.log('DISPLAYroominfo', roomInfo)
+viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
 viewRooms.innerHTML += `
 <section class = 'room-display-container'>
@@ -80,6 +82,19 @@ const setCalendarAttributes = () => {
   calendarInput.setAttribute("min", today)
 }
 
+
+const getInput = () => {
+let bookingDate = calendarInput.value
+console.log('BOOKING DATE', bookingDate)
+return bookingDate
+}
+
+
+const createFilterBtnIds = () => {
+  
+}
+
+
 export {
   displayCustomer, 
   displayTotalSpent, 
@@ -91,5 +106,7 @@ export {
   findBookingsButton,
   filters, 
   clearView, 
-  setCalendarAttributes
+  setCalendarAttributes,
+  getInput,  
+  calendarInput
 }
