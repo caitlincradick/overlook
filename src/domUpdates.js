@@ -1,5 +1,5 @@
-import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings, filterAvailableRooms, getTodayDate } from "./featureCode";
-import { bookingsTestData, roomsTestData } from './test-data';
+import { calculateTotalSpent, showAvailableRooms, showBookings, filterAvailableRooms, getTodayDate } from "./featureCode";
+// import { bookingsTestData, roomsTestData } from './test-data';
 
 //Global Variables
 const customerName = document.querySelector('.customer-name');
@@ -37,12 +37,13 @@ totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
 //going to need to have the ID in there for selecting it !!!!!! 
-const displayAvailableRooms = (todayDate, rooms, booking) => {
+const displayAvailableRooms = (selectedDate, rooms, booking) => {
 // let dateValue = calendarInput.value.split('-').join('/')
-const roomInfo = showAvailableRooms (todayDate, rooms, booking) 
+const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
 console.log('DISPLAYroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
+  console.log('ROOOOOOOM', room)
 viewRooms.innerHTML += `
 <section class = 'room-display-container'>
 <div class='avail-room-container'>
@@ -60,7 +61,7 @@ viewRooms.innerHTML += `
 
 
 const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
-selectedDate = calendarInput.value.split('-').join('/')
+// selectedDate = calendarInput.value.split('-').join('/')
 const roomInfo = filterAvailableRooms (selectedDate, roomType, rooms, booking) 
 console.log('FILTERroominfo', roomInfo)
 viewRooms.innerHTML = ''
@@ -103,11 +104,11 @@ const setCalendarAttributes = () => {
 }
 
 
-const getInput = () => {
-let bookingDate = calendarInput.value
-console.log('BOOKING DATE', bookingDate)
-return bookingDate
-}
+// const getInput = () => {
+// let bookingDate = calendarInput.value.split('-').join('/')
+// console.log('BOOKING DATE', bookingDate)
+// return bookingDate
+// }
 
 
 
@@ -123,7 +124,7 @@ export {
   findBookingsButton,
   filters, 
   setCalendarAttributes,
-  getInput,  
+  // getInput,  
   calendarInput, 
   showFilterSection
 }

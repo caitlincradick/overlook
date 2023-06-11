@@ -1,11 +1,9 @@
 // import {bookingsTestData,roomsTestData } from '../src/test-data.js';
-import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
+// import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 
-// const getCurrentCustomer = customers => Math.floor(Math.random() * customers.length);
 
 //Functions
 const calculateTotalSpent = (currentCustomer, rooms, booking) => {
-  // currentCustomer = getCurrentCustomer(currentCustomer)
   console.log("currentCUstomer",currentCustomer)
   return rooms.reduce((total, room) => {
     booking.forEach(booking => {
@@ -26,7 +24,7 @@ const showBookings = (currentCustomer, rooms, booking) => {
       room.costPerNight }
       arr.push(obj)
       arr.sort((a,b) =>  new Date(b.date) - new Date(a.date))
-      console.log(arr)
+      // console.log(arr)
       }
     })
     return arr 
@@ -34,21 +32,45 @@ const showBookings = (currentCustomer, rooms, booking) => {
 }
 
 
-const showAvailableRooms = (todayDate, rooms, booking) => {
-  return booking.reduce((arr, booking) => {
-      rooms.forEach(availRoom => {
-        if(booking.date != todayDate && booking.roomNumber === availRoom.number) {
-       arr.push(availRoom)
-        }
-        })
-    return arr
-  }, [])
-  }
+const showAvailableRooms = (selectedDate, rooms, bookings) => {
+  console.log('selectedDate', selectedDate)
+  const filteredRms = bookings.filter(booking => booking.date === selectedDate)
+  const unavailRoomNums = filteredRms.map(room => room.roomNumber)
+  const availRooms = rooms.filter(room => !unavailRoomNums.includes(room.number))
+  return availRooms
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 
+// console.log('showavailroomsdata', rooms)
+// console.log('bookingshowavail', booking)
+//    let showAvail = rooms.reduce((arr, room) => {
+//      booking.forEach(bookingA => {
+//       if(bookingA.date !== selectedDate && bookingA.roomNumber === room.number) {
+//    arr.push(room)
+//        }
+//        })
+//     return arr
+//  }, [])
+  // console.log('SHOW AVAIL', showAvail)
+  // return showAvail
 
   const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
     let available = false 
-    console.log('ROOOOOOOOM TYPPPPPE', roomType)
-    return booking.reduce((arr, booking) => {
+    const filtered = booking.reduce((arr, booking) => {
         rooms.forEach(room => {
           if(booking.date != selectedDate && booking.roomNumber === room.number && room.roomType === roomType) {
          arr.push(room)
@@ -61,6 +83,9 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
       return arr
       }
     }, []) 
+    return filtered.filter((item,
+      index) => filtered.indexOf(item) === index);
+      
     }
     
     const getTodayDate = () => {
@@ -84,7 +109,6 @@ const showAvailableRooms = (todayDate, rooms, booking) => {
       return filterArray
     }
 
-  
 
 export {
   calculateTotalSpent, 
@@ -94,6 +118,4 @@ export {
   getTodayDate, 
   showAllFilters, 
   formatTodayDate, 
-  // getCurrentCustomer
-  // currentDate
 }
