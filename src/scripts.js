@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, postAPI, fetchAPI} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, userNameInput, passwordInput, login, displayNoRooms} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, userNameInput, passwordInput, login, displayNoRooms, displayNoFilteredRooms} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import {showAllFilters, showBookings, showAvailableRooms, preventDoubleBooking} from './featureCode';
 
@@ -51,6 +51,7 @@ filterButtons.forEach(filterBtn => {
   filterBtn.addEventListener('click', () => {
     // noDuplicates(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
     displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
+    displayNoFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
   })
 })
 

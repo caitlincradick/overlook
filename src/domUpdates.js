@@ -131,9 +131,17 @@ const setCalendarAttributes = () => {
 
 const displayNoRooms = (selectedDate, rooms, booking) => {
   const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
-  if(!roomInfo.length || !filteredRoomInfo.length){
+  if(!roomInfo.length){
     viewRooms.innerHTML = 
     `<p>Sorry, there are no rooms available on this date. Please select a new date. `
+  }
+}
+
+const displayNoFilteredRooms = (selectedDate, roomType, rooms, booking) => {
+  const roomInfo = filterAvailableRooms(selectedDate, roomType, rooms, booking) 
+  if(!roomInfo.length){
+    viewRooms.innerHTML = 
+    `<p>Sorry, there are no ${roomType}s available on this date. Please select a new fitler. `
   }
 }
 
@@ -169,6 +177,7 @@ export {
   usernameInput, 
   passwordInput, 
   login,
-  displayNoRooms
+  displayNoRooms, 
+  displayNoFilteredRooms
 
 }
