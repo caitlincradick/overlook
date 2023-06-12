@@ -31,18 +31,36 @@ const showFilterSection = () => {
 }
 
 
-const login = (password, username) => {
+// const loginErrorHandling = (password, username, customerID) => {
+//   if(!password || !username){
+//     alert('Please fill in username and/or password')
+//   } else if(password !== 'overlook2021') {
+//    alert('Incorrect Password')
+//   } else if (username !== `customer${customerID}`) {
+//     alert('Please correct username')
+//   }
+//    }
+
+const login = (password, username, customers, rooms, bookings) => {
+ const userID = username.replace("customer" , "")
+  const customersX = customers.find(customer => customer.id === userID) 
+  console.log(customersX)
   if(!password || !username){
     alert('Please fill in username and/or password')
   } else if(password !== 'overlook2021') {
    alert('Incorrect Password')
-  } else if (!username) {
-    alert('Please enter username')
-  } else {
-    hide(loginPage)
-    show(mainBookingPage)
+  } else if (username !== `customer${userID}`) {
+    alert('Please correct username')
   }
-   }
+  if(password === 'overlook2021' && username === `customer${userID}`) {
+  show(mainBookingPage)
+  hide(loginPage)
+  // displayCustomer(customersX)
+  }
+
+
+  return customersX
+}
   
 
 const displayCustomer = (customer) => {
@@ -169,8 +187,9 @@ export {
   // showBookingPage, 
   usernameInput, 
   passwordInput, 
-  login,
+  // loginErrorHandling,
   displayNoRooms, 
-  displayNoFilteredRooms
+  displayNoFilteredRooms, 
+  login
 
 }

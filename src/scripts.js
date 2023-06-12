@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, postAPI, fetchAPI} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, usernameInput, passwordInput, login, displayNoRooms, displayNoFilteredRooms} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, usernameInput, passwordInput, loginErrorHandling, displayNoRooms, displayNoFilteredRooms, login} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import {showAllFilters, showBookings, showAvailableRooms, preventDoubleBooking} from './featureCode';
 
@@ -21,13 +21,15 @@ let bookings;
 //function to get data back
 
 //Event Listeners 
-window.addEventListener('load', () => {
+loginButton.addEventListener('click', (event) => {
+  event.preventDefault();
   savePromises()
   .then(data => {
     customers = data[0].customers;
     rooms = data[1].rooms;
     bookings = data[2].bookings;
-    displayCustomer(customers[4])
+    // loginErrorHandling(passwordInput.value, usernameInput.value, customers[4].id), 
+    login(passwordInput.value, usernameInput.value, customers)
     showBookings(customers[4],rooms, bookings)
     displayTotalSpent(customers[4], rooms, bookings)
     displayAllBookings(customers[4],rooms, bookings)
@@ -36,6 +38,23 @@ window.addEventListener('load', () => {
   setCalendarAttributes()
   
 });
+// })
+
+// window.addEventListener('load', () => {
+//   savePromises()
+//   .then(data => {
+//     customers = data[0].customers;
+//     rooms = data[1].rooms;
+//     bookings = data[2].bookings;
+//     displayCustomer(customers[4])
+//     showBookings(customers[4],rooms, bookings)
+//     displayTotalSpent(customers[4], rooms, bookings)
+//     displayAllBookings(customers[4],rooms, bookings)
+//     showAllFilters(rooms)
+//   });
+//   setCalendarAttributes()
+  
+// });
 
 findBookingsButton.addEventListener('click', () => {
   if(!calendarInput.value){
@@ -77,13 +96,13 @@ viewRooms.addEventListener('click', (event) =>  {
   }
 })
 
-loginButton.addEventListener('click', (event) => {
-  event.preventDefault();
-  console.log('CLICKYYYYY')
-  // showBookingPage()
-  login(passwordInput.value, usernameInput.value)
-  console.log(passwordInput.value)
-  // console.log('GET DATA', getData())
-})
+// loginButton.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   console.log('CLICKYYYYY')
+//   // showBookingPage()
+//   login(passwordInput.value, usernameInput.value)
+//   console.log(passwordInput.value)
+//   // console.log('GET DATA', getData())
+// })
 
 
