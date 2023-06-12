@@ -43,8 +43,8 @@ const showFilterSection = () => {
 
 const login = (password, username, customers, rooms, bookings) => {
  const userID = username.replace("customer" , "")
-  const customersX = customers.find(customer => customer.id === userID) 
-  console.log(customersX)
+  const customersX = customers.find(customer => customer.id === parseInt(userID)) 
+  console.log('CUSTOMERJSDLKFJDS', customersX)
   if(!password || !username){
     alert('Please fill in username and/or password')
   } else if(password !== 'overlook2021') {
@@ -55,7 +55,8 @@ const login = (password, username, customers, rooms, bookings) => {
   if(password === 'overlook2021' && username === `customer${userID}`) {
   show(mainBookingPage)
   hide(loginPage)
-  // displayCustomer(customersX)
+  displayCustomer(customersX)
+  displayTotalSpent(customersX, rooms, bookings)
   }
 
 
@@ -170,7 +171,7 @@ const displayNoFilteredRooms = (selectedDate, roomType, rooms, booking) => {
 export {
 
   displayCustomer, 
-  displayTotalSpent, 
+  // displayTotalSpent, 
   displayAvailableRooms, 
   displayFilteredRooms, 
   displayAllBookings, 

@@ -31,7 +31,7 @@ loginButton.addEventListener('click', (event) => {
     // loginErrorHandling(passwordInput.value, usernameInput.value, customers[4].id), 
     login(passwordInput.value, usernameInput.value, customers)
     showBookings(customers[4],rooms, bookings)
-    displayTotalSpent(customers[4], rooms, bookings)
+    // displayTotalSpent(customers[4], rooms, bookings)
     displayAllBookings(customers[4],rooms, bookings)
     showAllFilters(rooms)
   });
