@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, postAPI, fetchAPI} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, userNameInput, passwordInput, login, displayNoRooms, displayNoFilteredRooms} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, usernameInput, passwordInput, login, displayNoRooms, displayNoFilteredRooms} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import {showAllFilters, showBookings, showAvailableRooms, preventDoubleBooking} from './featureCode';
 
@@ -77,10 +77,11 @@ viewRooms.addEventListener('click', (event) =>  {
   }
 })
 
-loginButton.addEventListener('click', () => {
+loginButton.addEventListener('click', (event) => {
+  event.preventDefault();
   console.log('CLICKYYYYY')
   // showBookingPage()
-  login(passwordInput.value)
+  login(passwordInput.value, usernameInput.value)
   console.log(passwordInput.value)
   // console.log('GET DATA', getData())
 })

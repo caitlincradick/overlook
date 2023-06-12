@@ -30,27 +30,20 @@ const showFilterSection = () => {
   show(filters)
 }
 
-// const showBookingPage = () => {
-//   hide(loginPage)
-//   show(mainBookingPage)
-// }
-// const displayInputError = () => {
-//   if(calendarInput.value.split('-').join('/') < )
-// }
 
-const login = (password) => {
-  if(password != 'overlook2021'){
-    alert('Incorrect Password, please try again!')
-    hide(bookingMainPage)
+const login = (password, username) => {
+  if(!password || !username){
+    alert('Please fill in username and/or password')
+  } else if(password !== 'overlook2021') {
+   alert('Incorrect Password')
+  } else if (!username) {
+    alert('Please enter username')
   } else {
-    show(mainBookingPage)
     hide(loginPage)
-  // }
-  // if(!username) {
-  //   alert('Please type in username!')
-  // }
-   }
+    show(mainBookingPage)
   }
+   }
+  
 
 const displayCustomer = (customer) => {
     customerName.innerText = customer.name
