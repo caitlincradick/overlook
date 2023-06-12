@@ -108,6 +108,8 @@ const filterAvailableRooms = (selectedDate, roomType, rooms, bookings) => {
   // return filtered.filter((item, index) => filtered.indexOf(item) === index);
 
 
+ 
+
 
 export {
   calculateTotalSpent, 

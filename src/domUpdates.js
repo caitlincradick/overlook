@@ -12,6 +12,9 @@ const logOutButton = document.querySelector('.log-out')
 const findBookingsButton = document.querySelector('.find-button') 
 const calendarInput = document.getElementById('booking-calendar')
 const bookRoomBtn = document.querySelector('.book-btn-container') 
+const loginButton = document.querySelector('.login-button');
+const mainBookingPage = document.querySelector('.booking-page');
+const loginPage = document.querySelector('.login-page');
 
 function show(element) {
   element.classList.remove('hidden');
@@ -25,6 +28,10 @@ const showFilterSection = () => {
   show(filters)
 }
 
+const showBookingPage = () => {
+  hide(loginPage)
+  show(mainBookingPage)
+}
 // const displayInputError = () => {
 //   if(calendarInput.value.split('-').join('/') < )
 // }
@@ -130,5 +137,7 @@ export {
   // getInput,  
   calendarInput, 
   showFilterSection,
-  viewRooms
+  viewRooms, 
+  loginButton, 
+  showBookingPage
 }
