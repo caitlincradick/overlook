@@ -81,9 +81,9 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
 
   const preventDoubleBooking = (bookings, selectedDate, roomNumber) => {
     const alreadyBooked = bookings.filter(booking => booking.date === selectedDate)
-    console.log('ALREADY BOOKED', alreadyBooked)
+    // console.log('ALREADY BOOKED', alreadyBooked)
     const doubleBooked = alreadyBooked.filter(booked => booked.roomNumber === parseInt(roomNumber));
-    console.log('DOUBLE BOOKED', doubleBooked)
+    // console.log('DOUBLE BOOKED', doubleBooked)
   }
 
   const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {

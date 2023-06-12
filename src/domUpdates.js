@@ -58,8 +58,8 @@ const displayCustomer = (customer) => {
 
 const displayTotalSpent = (currentCustomer, rooms, booking) => {
  let totalAmount =  calculateTotalSpent(currentCustomer, rooms, booking)
- console.log('currentCustomer', currentCustomer)
- console.log(totalAmount)
+//  console.log('currentCustomer', currentCustomer)
+//  console.log(totalAmount)
 totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
@@ -89,7 +89,7 @@ viewRooms.innerHTML += `
 
 const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
 const roomInfo = filterAvailableRooms(selectedDate, roomType, rooms, booking) 
-console.log('FILTERroominfo', roomInfo)
+// console.log('FILTERroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
 viewRooms.innerHTML += `
@@ -129,6 +129,15 @@ const setCalendarAttributes = () => {
   calendarInput.setAttribute("min", today)
 }
 
+const displayNoRooms = (selectedDate, rooms, booking) => {
+  const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
+  if(!roomInfo.length || !filteredRoomInfo.length){
+    viewRooms.innerHTML = 
+    `<p>Sorry, there are no rooms available on this date. Please select a new date. `
+  }
+}
+
+
 
 // const getInput = () => {
 // let bookingDate = calendarInput.value.split('-').join('/')
@@ -159,6 +168,7 @@ export {
   // showBookingPage, 
   usernameInput, 
   passwordInput, 
-  login
+  login,
+  displayNoRooms
 
 }
