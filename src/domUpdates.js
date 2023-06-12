@@ -11,6 +11,7 @@ const filterButtons = document.querySelectorAll('.filter-btn')
 const logOutButton = document.querySelector('.log-out')
 const findBookingsButton = document.querySelector('.find-button') 
 const calendarInput = document.getElementById('booking-calendar')
+const bookRoomBtn = document.querySelector('.book-btn-container') 
 
 function show(element) {
   element.classList.remove('hidden');
@@ -24,6 +25,9 @@ const showFilterSection = () => {
   show(filters)
 }
 
+// const displayInputError = () => {
+//   if(calendarInput.value.split('-').join('/') < )
+// }
 
 const displayCustomer = (customer) => {
     customerName.innerText = customer.name
@@ -40,10 +44,10 @@ totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 const displayAvailableRooms = (selectedDate, rooms, booking) => {
 // let dateValue = calendarInput.value.split('-').join('/')
 const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
-console.log('DISPLAYroominfo', roomInfo)
+// console.log('DISPLAYroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
-  console.log('ROOOOOOOM', room)
+  // console.log('ROOOOOOOM', room)
 viewRooms.innerHTML += `
 <section class = 'room-display-container'>
 <div class='avail-room-container'>
@@ -53,7 +57,7 @@ viewRooms.innerHTML += `
  <p class='num-beds'>Number of Beds:${room.numBeds}</p>
  <p class='cost'> Cost per Night: $${room.costPerNight}</p>
  <p class='bidet'> This room has a bidet: ${room.bidet} </p>
- <button class='book-room'> Book Room </button>
+ <button class='book-room' id='${room.number}'> Book Room </button>
  </div>
 `
 })
@@ -75,7 +79,7 @@ viewRooms.innerHTML += `
  <p class='num-beds'>Number of Beds:${room.numBeds}</p>
  <p class='cost'> Cost per Night: $${room.costPerNight}</p>
  <p class='bidet'> This room has a bidet: ${room.bidet} </p>
- <button class='book-room'> Book Room </button>
+ <button class='book-room' ID="${room.number}"> Book Room </button>
  </div>
 `
 })
@@ -126,5 +130,6 @@ export {
   setCalendarAttributes,
   // getInput,  
   calendarInput, 
-  showFilterSection
+  showFilterSection,
+  viewRooms
 }

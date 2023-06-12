@@ -11,7 +11,7 @@ const calculateTotalSpent = (currentCustomer, rooms, booking) => {
      total += room.costPerNight
     }
       })
-    return total 
+    return total
   }, 0)
 }
 
@@ -35,8 +35,11 @@ const showBookings = (currentCustomer, rooms, booking) => {
 const showAvailableRooms = (selectedDate, rooms, bookings) => {
   console.log('selectedDate', selectedDate)
   const filteredRms = bookings.filter(booking => booking.date === selectedDate)
+  console.log("BOOKED ROOMS", filteredRms)
   const unavailRoomNums = filteredRms.map(room => room.roomNumber)
+  console.log('unavailRoomNums', unavailRoomNums)
   const availRooms = rooms.filter(room => !unavailRoomNums.includes(room.number))
+  console.log('availRooms', availRooms)
   return availRooms
 }
 

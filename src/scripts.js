@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import {showAllFilters, showBookings, showAvailableRooms} from './featureCode';
 
@@ -23,11 +23,11 @@ let bookings;
 window.addEventListener('load', () => {
   savePromises()
   .then(data => {
-    console.log('LOADING?')
+    // console.log('LOADING?')
     customers = data[0].customers;
     rooms = data[1].rooms;
     bookings = data[2].bookings;
-    console.log('global', bookings[0].date)
+    // console.log('global', bookings[0].date)
     displayCustomer(customers[4])
     showBookings(customers[4],rooms, bookings)
     displayTotalSpent(customers[4], rooms, bookings)
@@ -38,6 +38,14 @@ window.addEventListener('load', () => {
   
 });
 
+findBookingsButton.addEventListener('click', () => {
+  if(!calendarInput.value){
+    alert('Please select a date!')
+  } else {
+  displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
+  showFilterSection()
+  }
+})
 
 filterButtons.forEach(filterBtn => {
   filterBtn.addEventListener('click', () => {
@@ -45,14 +53,10 @@ filterButtons.forEach(filterBtn => {
 })
 })
 
- 
-  findBookingsButton.addEventListener('click', () => {
-    if(!calendarInput.value){
-      alert('Please select a date!')
-    } else {
-    displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
-    showFilterSection()
-    }
-    console.log('sup')
-  })
+viewRooms.addEventListener('click', (event) =>  {
+  if(event.target.classList.contains('book-room')){
+    const bookingID = event.target.id 
+    console.log(bookingID)
+  }
+})
 
