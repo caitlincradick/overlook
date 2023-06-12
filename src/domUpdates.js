@@ -15,6 +15,8 @@ const bookRoomBtn = document.querySelector('.book-btn-container')
 const loginButton = document.querySelector('.login-button');
 const mainBookingPage = document.querySelector('.booking-page');
 const loginPage = document.querySelector('.login-page');
+const usernameInput = document.querySelector('.username')
+const passwordInput = document.querySelector('.password')
 
 function show(element) {
   element.classList.remove('hidden');
@@ -28,13 +30,27 @@ const showFilterSection = () => {
   show(filters)
 }
 
-const showBookingPage = () => {
-  hide(loginPage)
-  show(mainBookingPage)
-}
+// const showBookingPage = () => {
+//   hide(loginPage)
+//   show(mainBookingPage)
+// }
 // const displayInputError = () => {
 //   if(calendarInput.value.split('-').join('/') < )
 // }
+
+const login = (password) => {
+  if(password != 'overlook2021'){
+    alert('Incorrect Password, please try again!')
+    hide(bookingMainPage)
+  } else {
+    show(mainBookingPage)
+    hide(loginPage)
+  // }
+  // if(!username) {
+  //   alert('Please type in username!')
+  // }
+   }
+  }
 
 const displayCustomer = (customer) => {
     customerName.innerText = customer.name
@@ -124,6 +140,7 @@ const setCalendarAttributes = () => {
 
 
 export {
+
   displayCustomer, 
   displayTotalSpent, 
   displayAvailableRooms, 
@@ -139,5 +156,9 @@ export {
   showFilterSection,
   viewRooms, 
   loginButton, 
-  showBookingPage
+  // showBookingPage, 
+  usernameInput, 
+  passwordInput, 
+  login
+
 }

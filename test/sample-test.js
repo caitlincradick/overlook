@@ -98,6 +98,6 @@ describe('filterAvailableRooms', () => {
 }); 
 it('Should display message if there are no rooms available', () => {
   const showAvailableRooms = filterAvailableRooms('2022/04/22', 'residential suite', roomsTestData, bookingsTestData )
-  expect(showAvailableRooms).to.be.equal(`Room is unavailabe, please adjust your search!`);
+  expect(showAvailableRooms).to.deep.equal([]);
 });
 });

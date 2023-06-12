@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, postAPI, fetchAPI} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, userNameInput, passwordInput, login} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import {showAllFilters, showBookings, showAvailableRooms, preventDoubleBooking} from './featureCode';
 
@@ -60,7 +60,7 @@ const getData = () => {
     rooms = data[1].rooms;
     // console.log('ROOOOOM', rooms)
     bookings = data[2].bookings;
-    console.log('BERKINGS', bookings)
+    console.log('BOOKINGS BACK', bookings)
   })
 }
 
@@ -77,7 +77,9 @@ viewRooms.addEventListener('click', (event) =>  {
 
 loginButton.addEventListener('click', () => {
   console.log('CLICKYYYYY')
-  showBookingPage()
+  // showBookingPage()
+  login(passwordInput.value)
+  console.log(passwordInput.value)
   // console.log('GET DATA', getData())
 })
 

@@ -1,6 +1,9 @@
 // import {bookingsTestData,roomsTestData } from '../src/test-data.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 
+// import { loginButton } from "./domUpdates"
+//NOOOOO IMPORTING DOM 
+
 
 //Functions
 const calculateTotalSpent = (currentCustomer, rooms, booking) => {
@@ -43,13 +46,13 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
 }
   
 
-const filterAvailableRooms = (selectedDate, roomType, rooms, bookings) => {
-  const availableRooms = showAvailableRooms((selectedDate, rooms, bookings))
-  const filteredRooms = availableRooms.filter(room => room.roomType === roomType)
-  const filteredArray = filteredRooms.filter((item, index) => filtered.indexOf(item) === index);
-  console.log("FILTERED DAT SHIT", filteredArray)
-  return filteredArray
-}
+// const filterAvailableRooms = (selectedDate, roomType, rooms, bookings) => {
+//   const availableRooms = showAvailableRooms((selectedDate, rooms, bookings))
+//   const filteredRooms = availableRooms.filter(room => room.roomType === roomType)
+//   const filteredArray = filteredRooms.filter((item, index) => filtered.indexOf(item) === index);
+//   console.log("FILTERED DAT SHIT", filteredArray)
+//   return filteredArray
+// }
 
 
 
@@ -83,32 +86,23 @@ const filterAvailableRooms = (selectedDate, roomType, rooms, bookings) => {
     console.log('DOUBLE BOOKED', doubleBooked)
   }
 
-  // const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
-  //   let available = false 
-  //  const filtered = booking.reduce((arr, booking) => {
-  //       rooms.forEach(room => {
-  //         if(booking.date != selectedDate && booking.roomNumber === room.number && room.roomType === roomType) {
-  //        arr.push(room)
-  //       available = true 
-  //         }
-  //         })
-  //     // if( !available && booking.date === selectedDate) {
-  //     //   return `Room is unavailabe, please adjust your search!`
-  //     // } else {
-  //     return arr
-      
-  //   }, [])  
-  //   return filtered.filter((item, index) => filtered.indexOf(item) === index);
-  // }
-
-//   const noDuplicates = (selectedDate, roomType, rooms, booking) => {
-//   const filteredRooms = filterAvailableRooms = (selectedDate, roomType, rooms, booking)
-// return filteredRooms.filter((item, index) => filtered.indexOf(item) === index);
-//   }
-  // return filtered.filter((item, index) => filtered.indexOf(item) === index);
+  const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
+    const availableRooms = showAvailableRooms(selectedDate, rooms, booking)
+   return booking.reduce((arr, booking) => {
+        availableRooms.forEach(room => {
+          if(selectedDate && booking.roomNumber === room.number && room.roomType === roomType) {
+            console.log('hello')
+         arr.push(room)
+          }
+          })
+      return arr.filter((item, index) => arr.indexOf(item) === index)
+    }, [])  
+    }
+  
 
 
- 
+
+
 
 
 export {
@@ -120,6 +114,7 @@ export {
   showAllFilters, 
   formatTodayDate, 
   preventDoubleBooking, 
+
   // filterAvailableRooms
 
   // noDuplicates
