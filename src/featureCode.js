@@ -24,7 +24,6 @@ const showBookings = (currentCustomer, rooms, booking) => {
       room.costPerNight }
       arr.push(obj)
       arr.sort((a,b) =>  new Date(b.date) - new Date(a.date))
-      // console.log(arr)
       }
     })
     return arr 
@@ -112,6 +111,16 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
       return filterArray
     }
 
+  
+  const preventDoubleBooking = (bookings, selectedDate, roomNumber) => {
+    const alreadyBooked = bookings.filter(booking => booking.date === selectedDate)
+    console.log('ALREADY BOOKED', alreadyBooked)
+    const doubleBooked = alreadyBooked.filter(booked => booked.roomNumber === parseInt(roomNumber));
+    console.log('DOUBLE BOOKED', doubleBooked)
+  }
+
+
+
 
 export {
   calculateTotalSpent, 
@@ -121,4 +130,5 @@ export {
   getTodayDate, 
   showAllFilters, 
   formatTodayDate, 
+  preventDoubleBooking
 }
