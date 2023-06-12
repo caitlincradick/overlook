@@ -193,3 +193,13 @@ h3 {
 .hidden {
   display:none; 
 }
+
+/* LOGIN */
+.login-container{
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:50vh; 
+  width: 100vw;
+}

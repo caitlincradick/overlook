@@ -12,6 +12,11 @@ const logOutButton = document.querySelector('.log-out')
 const findBookingsButton = document.querySelector('.find-button') 
 const calendarInput = document.getElementById('booking-calendar')
 const bookRoomBtn = document.querySelector('.book-btn-container') 
+const loginButton = document.querySelector('.login-button');
+const mainBookingPage = document.querySelector('.booking-page');
+const loginPage = document.querySelector('.login-page');
+const usernameInput = document.querySelector('.username')
+const passwordInput = document.querySelector('.password')
 
 function show(element) {
   element.classList.remove('hidden');
@@ -25,18 +30,50 @@ const showFilterSection = () => {
   show(filters)
 }
 
-// const displayInputError = () => {
-//   if(calendarInput.value.split('-').join('/') < )
-// }
+
+// const loginErrorHandling = (password, username, customerID) => {
+//   if(!password || !username){
+//     alert('Please fill in username and/or password')
+//   } else if(password !== 'overlook2021') {
+//    alert('Incorrect Password')
+//   } else if (username !== `customer${customerID}`) {
+//     alert('Please correct username')
+//   }
+//    }
+
+const login = (password, username, customers, rooms, bookings) => {
+ const userID = username.replace("customer" , "")
+  const customersX = customers.find(customer => customer.id === parseInt(userID)) 
+  console.log('CUSTOMERJSDLKFJDS', customersX)
+  if(!password || !username){
+    alert('Please fill in username and/or password')
+  } else if(password !== 'overlook2021') {
+   alert('Incorrect Password')
+  } else if (username !== `customer${userID}` || userID > 50) {
+    alert('Please correct username')
+  }
+  if(password === 'overlook2021' && username === `customer${userID}` && userID <= 50) {
+  show(mainBookingPage)
+  hide(loginPage)
+  displayCustomer(customersX)
+  console.log('ROOOOMS LOGIN', rooms)
+  displayTotalSpent(customersX, rooms, bookings)
+  displayAllBookings(customersX,rooms, bookings)
+  }
+  return customersX
+}
+  
 
 const displayCustomer = (customer) => {
     customerName.innerText = customer.name
 };
 
 const displayTotalSpent = (currentCustomer, rooms, booking) => {
+  console.log('DISPLAY CURRENT CUSTOMER', currentCustomer)
+  console.log('DISPLAY ROOMS', rooms)
  let totalAmount =  calculateTotalSpent(currentCustomer, rooms, booking)
- console.log('currentCustomer', currentCustomer)
- console.log(totalAmount)
+//  console.log('currentCustomer', currentCustomer)
+//  console.log(totalAmount)
 totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
@@ -66,7 +103,7 @@ viewRooms.innerHTML += `
 
 const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
 const roomInfo = filterAvailableRooms(selectedDate, roomType, rooms, booking) 
-console.log('FILTERroominfo', roomInfo)
+// console.log('FILTERroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
 viewRooms.innerHTML += `
@@ -106,22 +143,38 @@ const setCalendarAttributes = () => {
   calendarInput.setAttribute("min", today)
 }
 
+const displayNoRooms = (selectedDate, rooms, booking) => {
+  const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
+  if(!roomInfo.length){
+    viewRooms.innerHTML = 
+    `<p>Sorry, there are no rooms available on this date. Please select a new date. `
+  }
+}
 
-// const getInput = () => {
-// let bookingDate = calendarInput.value.split('-').join('/')
-// console.log('BOOKING DATE', bookingDate)
-// return bookingDate
-// }
+const displayNoFilteredRooms = (selectedDate, roomType, rooms, booking) => {
+  const roomInfo = filterAvailableRooms(selectedDate, roomType, rooms, booking) 
+  if(!roomInfo.length){
+    viewRooms.innerHTML = 
+    `<p>Sorry, there are no ${roomType}s available on this date. Please select a new fitler. `
+  }
+}
 
 
+
+
+const logOut = () => {
+  hide(mainBookingPage)
+  show(loginPage)
+}
 
 
 export {
+
   displayCustomer, 
-  displayTotalSpent, 
+  // displayTotalSpent, 
   displayAvailableRooms, 
   displayFilteredRooms, 
-  displayAllBookings, 
+  // displayAllBookings, 
   filterButtons, 
   logOutButton, 
   findBookingsButton,
@@ -130,5 +183,15 @@ export {
   // getInput,  
   calendarInput, 
   showFilterSection,
-  viewRooms
+  viewRooms, 
+  loginButton, 
+  // showBookingPage, 
+  usernameInput, 
+  passwordInput, 
+  // loginErrorHandling,
+  displayNoRooms, 
+  displayNoFilteredRooms, 
+  login,
+  logOut
+
 }

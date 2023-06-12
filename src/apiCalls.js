@@ -21,4 +21,5 @@ const postAPI = (userID, date, roomNumber) => {
     .catch( () => alert("Server is down, please try again later."))
 
 }
+
  export {savePromises, test, postAPI, fetchAPI}
