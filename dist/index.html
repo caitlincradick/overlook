@@ -22,13 +22,11 @@
   </nav>
   <section class="container">
     <div class="view-book-filter-container">
-    <form >
-      <label class="book-stay"> 
-        Booking Date:
-      <input type="date" id='booking-calendar' name="calendar" max="2024-1-9"/>>
+    <div class="book-stay">
+      <label for="booking-calendar">Booking Date</label>
+      <input type="date" id='booking-calendar' name="booking-calendar" max="2024-1-9" required/>
       <p><button type="submit" class="find-button">Find Bookings</button></p>
-    </label>
-    </form>
+    </div>
     <section class ="filters hidden">
       <h3>Filter Rooms</h3>
        <button class="filter-btn" id="residential-suite">Residential Suite</button>

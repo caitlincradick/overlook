@@ -59,7 +59,7 @@ const getData = () => {
     rooms = data[1].rooms;
     // console.log('ROOOOOM', rooms)
     bookings = data[2].bookings;
-    // console.log('BERKINGS', bookings)
+    console.log('BERKINGS', bookings)
   })
 }
 
