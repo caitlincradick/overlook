@@ -8,62 +8,55 @@ import './css/styles.css';
 // import './dist/images/water-image.jpg'
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
-import {savePromises, test} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllFilters, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, getInput, calendarInput, displayFilteredRooms} from './domUpdates';
-import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
-import { getTodayDate, showAllFilters, showBookings, filterAvailableRooms } from './featureCode';
+import {savePromises} from './apiCalls';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms} from './domUpdates';
+// import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
+import {showAllFilters, showBookings, showAvailableRooms} from './featureCode';
 
 console.log('This is the JavaScript entry file - your code begins here.'); 
 let customers;
 let rooms;
 let bookings;
 
+
 //Event Listeners 
 window.addEventListener('load', () => {
   savePromises()
   .then(data => {
+    // console.log('LOADING?')
     customers = data[0].customers;
     rooms = data[1].rooms;
     bookings = data[2].bookings;
-    console.log(customers)
+    // console.log('global', bookings[0].date)
+    displayCustomer(customers[4])
+    showBookings(customers[4],rooms, bookings)
+    displayTotalSpent(customers[4], rooms, bookings)
+    displayAllBookings(customers[4],rooms, bookings)
+    showAllFilters(rooms)
   });
-  // test()
-  console.log(savePromises())
-  displayCustomer(customersTestData)
-  displayTotalSpent(customersTestData[4], roomsTestData, bookingsTestData)
-  console.log('today date', getTodayDate())
-  showBookings(customersTestData[4],roomsTestData, bookingsTestData)
-  displayAllBookings(customersTestData[4],roomsTestData, bookingsTestData)
-  showAllFilters(roomsTestData)
-  setCalendarAttributes()
-  // displayAllFilters(roomsTestData)
+    setCalendarAttributes()
+  
 });
 
+findBookingsButton.addEventListener('click', () => {
+  if(!calendarInput.value){
+    alert('Please select a date!')
+  } else {
+  displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
+  showFilterSection()
+  }
+})
 
-// console.log('buttons', filterButtons)
 filterButtons.forEach(filterBtn => {
   filterBtn.addEventListener('click', () => {
-    console.log('BUTTTTON', filterBtn.id.split('-').join(' '))
-  filterAvailableRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), roomsTestData, bookingsTestData)
-  displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), roomsTestData, bookingsTestData)
+  displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
 })
 })
 
-// document.addEventListener('click', function(event) {
-//   if (event.target.matches('.filter-btns')) {
-//     console.log('dang')
-//     clearView()
-    
-//   }
-// });
-  
-  findBookingsButton.addEventListener('click', () => {
-    if(!calendarInput.value){
-      alert('Please select a date!')
-    } else {
-    getInput()
-    displayAvailableRooms(calendarInput.value.split('-').join('/'),roomsTestData, bookingsTestData)
-    }
-    console.log('sup')
-  })
+viewRooms.addEventListener('click', (event) =>  {
+  if(event.target.classList.contains('book-room')){
+    const bookingID = event.target.id 
+    console.log(bookingID)
+  }
+})
 

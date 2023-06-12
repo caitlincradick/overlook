@@ -96,6 +96,8 @@ img {
   flex-wrap: wrap;
   height: 70vh;
   width: 60vw;
+  overflow-y: scroll;
+  overflow-x: hidden; 
 }
 .room-display-container {
 display: flex;
@@ -109,6 +111,7 @@ flex-wrap: wrap;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  flex-wrap: wrap;
   height: 20vh;
   width: 15vw;
   font-size: small;
@@ -116,14 +119,13 @@ flex-wrap: wrap;
   margin-top: 3%;
 }
 
-.view-all-rooms {
+/* .view-all-rooms {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: solid red 2px;
-  overflow-y: scroll;
-  overflow-x: hidden; 
-}
+
+} */
 
 h1 {
   font-weight: bolder;
@@ -188,3 +190,6 @@ h3 {
 }
 
 
+.hidden {
+  display:none; 
+}

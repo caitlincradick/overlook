@@ -1,5 +1,5 @@
-import { calculateTotalSpent, showAvailableRooms, showAllFilters, showBookings, filterAvailableRooms, getTodayDate } from "./featureCode";
-import { bookingsTestData, roomsTestData } from './test-data';
+import { calculateTotalSpent, showAvailableRooms, showBookings, filterAvailableRooms, getTodayDate } from "./featureCode";
+// import { bookingsTestData, roomsTestData } from './test-data';
 
 //Global Variables
 const customerName = document.querySelector('.customer-name');
@@ -11,27 +11,43 @@ const filterButtons = document.querySelectorAll('.filter-btn')
 const logOutButton = document.querySelector('.log-out')
 const findBookingsButton = document.querySelector('.find-button') 
 const calendarInput = document.getElementById('booking-calendar')
+const bookRoomBtn = document.querySelector('.book-btn-container') 
 
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+const showFilterSection = () => {
+  show(filters)
+}
+
+// const displayInputError = () => {
+//   if(calendarInput.value.split('-').join('/') < )
+// }
 
 const displayCustomer = (customer) => {
-  customer.forEach(customer => {
     customerName.innerText = customer.name
-  })
 };
 
 const displayTotalSpent = (currentCustomer, rooms, booking) => {
  let totalAmount =  calculateTotalSpent(currentCustomer, rooms, booking)
+ console.log('currentCustomer', currentCustomer)
  console.log(totalAmount)
 totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
 //going to need to have the ID in there for selecting it !!!!!! 
-const displayAvailableRooms = () => {
-let dateValue = calendarInput.value.split('-').join('/')
-const roomInfo = showAvailableRooms (dateValue, roomsTestData, bookingsTestData) 
-console.log('DISPLAYroominfo', roomInfo)
+const displayAvailableRooms = (selectedDate, rooms, booking) => {
+// let dateValue = calendarInput.value.split('-').join('/')
+const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
+// console.log('DISPLAYroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
+  // console.log('ROOOOOOOM', room)
 viewRooms.innerHTML += `
 <section class = 'room-display-container'>
 <div class='avail-room-container'>
@@ -41,7 +57,7 @@ viewRooms.innerHTML += `
  <p class='num-beds'>Number of Beds:${room.numBeds}</p>
  <p class='cost'> Cost per Night: $${room.costPerNight}</p>
  <p class='bidet'> This room has a bidet: ${room.bidet} </p>
- <button class='book-room'> Book Room </button>
+ <button class='book-room' id='${room.number}'> Book Room </button>
  </div>
 `
 })
@@ -49,7 +65,7 @@ viewRooms.innerHTML += `
 
 
 const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
-selectedDate = calendarInput.value.split('-').join('/')
+// selectedDate = calendarInput.value.split('-').join('/')
 const roomInfo = filterAvailableRooms (selectedDate, roomType, rooms, booking) 
 console.log('FILTERroominfo', roomInfo)
 viewRooms.innerHTML = ''
@@ -63,7 +79,7 @@ viewRooms.innerHTML += `
  <p class='num-beds'>Number of Beds:${room.numBeds}</p>
  <p class='cost'> Cost per Night: $${room.costPerNight}</p>
  <p class='bidet'> This room has a bidet: ${room.bidet} </p>
- <button class='book-room'> Book Room </button>
+ <button class='book-room' ID="${room.number}"> Book Room </button>
  </div>
 `
 })
@@ -92,11 +108,11 @@ const setCalendarAttributes = () => {
 }
 
 
-const getInput = () => {
-let bookingDate = calendarInput.value
-console.log('BOOKING DATE', bookingDate)
-return bookingDate
-}
+// const getInput = () => {
+// let bookingDate = calendarInput.value.split('-').join('/')
+// console.log('BOOKING DATE', bookingDate)
+// return bookingDate
+// }
 
 
 
@@ -112,6 +128,8 @@ export {
   findBookingsButton,
   filters, 
   setCalendarAttributes,
-  getInput,  
-  calendarInput
+  // getInput,  
+  calendarInput, 
+  showFilterSection,
+  viewRooms
 }
