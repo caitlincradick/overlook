@@ -8,6 +8,7 @@
 //Functions
 const calculateTotalSpent = (currentCustomer, rooms, booking) => {
   console.log("currentCUstomer",currentCustomer)
+  
   return rooms.reduce((total, room) => {
     booking.forEach(booking => {
     if(booking.userID === currentCustomer.id && booking.roomNumber === room.number) {

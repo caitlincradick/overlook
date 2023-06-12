@@ -56,7 +56,9 @@ const login = (password, username, customers, rooms, bookings) => {
   show(mainBookingPage)
   hide(loginPage)
   displayCustomer(customersX)
+  console.log('ROOOOMS LOGIN', rooms)
   displayTotalSpent(customersX, rooms, bookings)
+  displayAllBookings(customersX,rooms, bookings)
   }
 
 
@@ -69,6 +71,8 @@ const displayCustomer = (customer) => {
 };
 
 const displayTotalSpent = (currentCustomer, rooms, booking) => {
+  console.log('DISPLAY CURRENT CUSTOMER', currentCustomer)
+  console.log('DISPLAY ROOMS', rooms)
  let totalAmount =  calculateTotalSpent(currentCustomer, rooms, booking)
 //  console.log('currentCustomer', currentCustomer)
 //  console.log(totalAmount)
@@ -174,7 +178,7 @@ export {
   // displayTotalSpent, 
   displayAvailableRooms, 
   displayFilteredRooms, 
-  displayAllBookings, 
+  // displayAllBookings, 
   filterButtons, 
   logOutButton, 
   findBookingsButton,

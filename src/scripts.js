@@ -29,10 +29,10 @@ loginButton.addEventListener('click', (event) => {
     rooms = data[1].rooms;
     bookings = data[2].bookings;
     // loginErrorHandling(passwordInput.value, usernameInput.value, customers[4].id), 
-    login(passwordInput.value, usernameInput.value, customers)
+    login(passwordInput.value, usernameInput.value, customers, rooms, bookings)
     showBookings(customers[4],rooms, bookings)
     // displayTotalSpent(customers[4], rooms, bookings)
-    displayAllBookings(customers[4],rooms, bookings)
+    // displayAllBookings(customers[4],rooms, bookings)
     showAllFilters(rooms)
   });
   setCalendarAttributes()
