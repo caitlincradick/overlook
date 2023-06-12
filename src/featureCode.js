@@ -32,7 +32,7 @@ const showBookings = (currentCustomer, rooms, booking) => {
 
 
 const showAvailableRooms = (selectedDate, rooms, bookings) => {
-  console.log('selectedDate', selectedDate)
+  // console.log('selectedDate', selectedDate)
   const filteredRms = bookings.filter(booking => booking.date === selectedDate)
   // console.log("BOOKED ROOMS", filteredRms)
   const unavailRoomNums = filteredRms.map(room => room.roomNumber)
@@ -41,25 +41,19 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
   // console.log('availRooms', availRooms)
   return availRooms
 }
-  const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
-    let available = false 
-    const filtered = booking.reduce((arr, booking) => {
-        rooms.forEach(room => {
-          if(booking.date != selectedDate && booking.roomNumber === room.number && room.roomType === roomType) {
-         arr.push(room)
-        available = true 
-          }
-          })
-      if( !available && booking.date === selectedDate) {
-        return `Room is unavailabe, please adjust your search!`
-      } else {
-      return arr
-      }
-    }, []) 
-    console.log("FILTERED", filtered)
-    
-    return filtered.filter((item, index) => filtered.indexOf(item) === index);
-    }
+  
+
+const filterAvailableRooms = (selectedDate, roomType, rooms, bookings) => {
+  const availableRooms = showAvailableRooms((selectedDate, rooms, bookings))
+  const filteredRooms = availableRooms.filter(room => room.roomType === roomType)
+  const filteredArray = filteredRooms.filter((item, index) => filtered.indexOf(item) === index);
+  console.log("FILTERED DAT SHIT", filteredArray)
+  return filteredArray
+}
+
+
+
+
     
     const getTodayDate = () => {
       let date = new Date().toJSON().slice(0, 10)
@@ -89,6 +83,32 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
     console.log('DOUBLE BOOKED', doubleBooked)
   }
 
+  // const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
+  //   let available = false 
+  //  const filtered = booking.reduce((arr, booking) => {
+  //       rooms.forEach(room => {
+  //         if(booking.date != selectedDate && booking.roomNumber === room.number && room.roomType === roomType) {
+  //        arr.push(room)
+  //       available = true 
+  //         }
+  //         })
+  //     // if( !available && booking.date === selectedDate) {
+  //     //   return `Room is unavailabe, please adjust your search!`
+  //     // } else {
+  //     return arr
+      
+  //   }, [])  
+  //   return filtered.filter((item, index) => filtered.indexOf(item) === index);
+  // }
+
+//   const noDuplicates = (selectedDate, roomType, rooms, booking) => {
+//   const filteredRooms = filterAvailableRooms = (selectedDate, roomType, rooms, booking)
+// return filteredRooms.filter((item, index) => filtered.indexOf(item) === index);
+//   }
+  // return filtered.filter((item, index) => filtered.indexOf(item) === index);
+
+
+
 export {
   calculateTotalSpent, 
   showBookings,
@@ -97,5 +117,8 @@ export {
   getTodayDate, 
   showAllFilters, 
   formatTodayDate, 
-  preventDoubleBooking
+  preventDoubleBooking, 
+  // filterAvailableRooms
+
+  // noDuplicates
 }

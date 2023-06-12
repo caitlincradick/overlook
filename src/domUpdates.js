@@ -65,8 +65,7 @@ viewRooms.innerHTML += `
 
 
 const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
-// selectedDate = calendarInput.value.split('-').join('/')
-const roomInfo = filterAvailableRooms (selectedDate, roomType, rooms, booking) 
+const roomInfo = filterAvailableRooms(selectedDate, roomType, rooms, booking) 
 console.log('FILTERroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
