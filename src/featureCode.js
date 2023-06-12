@@ -34,42 +34,13 @@ const showBookings = (currentCustomer, rooms, booking) => {
 const showAvailableRooms = (selectedDate, rooms, bookings) => {
   console.log('selectedDate', selectedDate)
   const filteredRms = bookings.filter(booking => booking.date === selectedDate)
-  console.log("BOOKED ROOMS", filteredRms)
+  // console.log("BOOKED ROOMS", filteredRms)
   const unavailRoomNums = filteredRms.map(room => room.roomNumber)
-  console.log('unavailRoomNums', unavailRoomNums)
+  // console.log('unavailRoomNums', unavailRoomNums)
   const availRooms = rooms.filter(room => !unavailRoomNums.includes(room.number))
-  console.log('availRooms', availRooms)
+  // console.log('availRooms', availRooms)
   return availRooms
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 
-// console.log('showavailroomsdata', rooms)
-// console.log('bookingshowavail', booking)
-//    let showAvail = rooms.reduce((arr, room) => {
-//      booking.forEach(bookingA => {
-//       if(bookingA.date !== selectedDate && bookingA.roomNumber === room.number) {
-//    arr.push(room)
-//        }
-//        })
-//     return arr
-//  }, [])
-  // console.log('SHOW AVAIL', showAvail)
-  // return showAvail
-
   const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
     let available = false 
     const filtered = booking.reduce((arr, booking) => {
@@ -85,9 +56,9 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
       return arr
       }
     }, []) 
-    return filtered.filter((item,
-      index) => filtered.indexOf(item) === index);
-      
+    console.log("FILTERED", filtered)
+    
+    return filtered.filter((item, index) => filtered.indexOf(item) === index);
     }
     
     const getTodayDate = () => {
@@ -111,16 +82,12 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
       return filterArray
     }
 
-  
   const preventDoubleBooking = (bookings, selectedDate, roomNumber) => {
     const alreadyBooked = bookings.filter(booking => booking.date === selectedDate)
     console.log('ALREADY BOOKED', alreadyBooked)
     const doubleBooked = alreadyBooked.filter(booked => booked.roomNumber === parseInt(roomNumber));
     console.log('DOUBLE BOOKED', doubleBooked)
   }
-
-
-
 
 export {
   calculateTotalSpent, 
