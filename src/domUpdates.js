@@ -49,10 +49,10 @@ const login = (password, username, customers, rooms, bookings) => {
     alert('Please fill in username and/or password')
   } else if(password !== 'overlook2021') {
    alert('Incorrect Password')
-  } else if (username !== `customer${userID}`) {
+  } else if (username !== `customer${userID}` || userID > 50) {
     alert('Please correct username')
   }
-  if(password === 'overlook2021' && username === `customer${userID}`) {
+  if(password === 'overlook2021' && username === `customer${userID}` && userID <= 50) {
   show(mainBookingPage)
   hide(loginPage)
   displayCustomer(customersX)
@@ -60,8 +60,6 @@ const login = (password, username, customers, rooms, bookings) => {
   displayTotalSpent(customersX, rooms, bookings)
   displayAllBookings(customersX,rooms, bookings)
   }
-
-
   return customersX
 }
   
@@ -163,11 +161,6 @@ const displayNoFilteredRooms = (selectedDate, roomType, rooms, booking) => {
 
 
 
-// const getInput = () => {
-// let bookingDate = calendarInput.value.split('-').join('/')
-// console.log('BOOKING DATE', bookingDate)
-// return bookingDate
-// }
 
 const logOut = () => {
   hide(mainBookingPage)

@@ -81,7 +81,7 @@ const getData = () => {
     rooms = data[1].rooms;
     // console.log('ROOOOOM', rooms)
     bookings = data[2].bookings;
-    // console.log('BOOKINGS BACK', bookings)
+    console.log('BOOKINGS BACK', bookings)
   })
 }
 
@@ -95,16 +95,6 @@ viewRooms.addEventListener('click', (event) =>  {
     // console.log('AHHHHHHH', bookings)
   }
 })
-
-// loginButton.addEventListener('click', (event) => {
-//   event.preventDefault();
-//   console.log('CLICKYYYYY')
-//   // showBookingPage()
-//   login(passwordInput.value, usernameInput.value)
-//   console.log(passwordInput.value)
-//   // console.log('GET DATA', getData())
-// })
-
 
 logOutButton.addEventListener('click', () => {
   logOut()
