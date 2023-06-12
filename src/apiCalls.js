@@ -10,15 +10,15 @@ const test = () => {
   console.log("howdy")
 }
 
-const postData = () => {
-  return fetch ('http://localhost:3001/api/v1/bookings'), {
+const postAPI = (userID, date, roomNumber) => {
+  return fetch ('http://localhost:3001/api/v1/bookings', {
     method:'POST', 
-    body: JSON.stringify({userID: userID, date: date, roomNumber: roomNumber}), 
+    body: JSON.stringify({userID: userID, date: date, roomNumber: parseInt(roomNumber)}), 
     headers: { "Content-Type": "application/json"}
-  }
+  })
     .then(response => response.json())
-    .then(json => console.log(json.message))
-    .catch(err => alert("SERVER DOWN"))
+    .then(json => json.message)
+    .catch( () => alert("Server is down, please try again later."))
 
 }
- export {savePromises, test, postData}
+ export {savePromises, test, postAPI, fetchAPI}

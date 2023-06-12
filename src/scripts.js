@@ -11,7 +11,7 @@ import './css/styles.css';
 import {savePromises, postAPI, fetchAPI} from './apiCalls';
 import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
-import {showAllFilters, showBookings, showAvailableRooms} from './featureCode';
+import {showAllFilters, showBookings, showAvailableRooms, preventDoubleBooking} from './featureCode';
 
 console.log('This is the JavaScript entry file - your code begins here.'); 
 let customers;
@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
     displayAllBookings(customers[4],rooms, bookings)
     showAllFilters(rooms)
   });
-    setCalendarAttributes()
+  setCalendarAttributes()
   
 });
 
@@ -41,35 +41,42 @@ findBookingsButton.addEventListener('click', () => {
   if(!calendarInput.value){
     alert('Please select a date!')
   } else {
-  displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
-  showFilterSection()
+    displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
+    showFilterSection()
   }
 })
 
 filterButtons.forEach(filterBtn => {
   filterBtn.addEventListener('click', () => {
-  displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
+    displayFilteredRooms(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
+  })
 })
-})
+
+const getData = () => {
+  savePromises().then(data => {
+    customers = data[0].customers;
+    // console.log('CUSTERMERS', customers)
+    rooms = data[1].rooms;
+    // console.log('ROOOOOM', rooms)
+    bookings = data[2].bookings;
+    // console.log('BERKINGS', bookings)
+  })
+}
 
 viewRooms.addEventListener('click', (event) =>  {
   if(event.target.classList.contains('book-room')){
     const bookingID = event.target.id 
     console.log(bookingID)
     postAPI(customers[4].id, calendarInput.value.split('-').join('/'), event.target.id)
+    getData()
+    preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id)
+    // console.log('AHHHHHHH', bookings)
   }
 })
 
 logOutButton.addEventListener('click', () => {
   console.log('CLICKYYYYY')
-// console.log('GET DATA', getData())
+  // console.log('GET DATA', getData())
 })
 
-// const getData = (customers) => {
-//   fetchAPI().then(data => {
-//     customers = data[0].customers;
-//     rooms = data[1].rooms;
-//     bookings = data[2].bookings;
-//   })
-// }
 
