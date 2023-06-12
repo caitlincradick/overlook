@@ -169,7 +169,10 @@ const displayNoFilteredRooms = (selectedDate, roomType, rooms, booking) => {
 // return bookingDate
 // }
 
-
+const logOut = () => {
+  hide(mainBookingPage)
+  show(loginPage)
+}
 
 
 export {
@@ -195,6 +198,7 @@ export {
   // loginErrorHandling,
   displayNoRooms, 
   displayNoFilteredRooms, 
-  login
+  login,
+  logOut
 
 }
