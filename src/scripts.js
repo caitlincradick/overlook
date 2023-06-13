@@ -72,7 +72,7 @@ viewRooms.addEventListener('click', (event) =>  {
       
         // displayAvailableRooms(calendarInput.value.split('-').join('/'), rooms, bookings)
         displayAllBookings (currentCustomer, rooms, bookings)
-        console.log('revent aray', preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id, currentCustomer))
+        // console.log('revent aray', preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id, currentCustomer))
       }
     })
     
