@@ -2,10 +2,10 @@
 const calculateTotalSpent = (currentCustomer, rooms, booking) => {
   return rooms.reduce((total, room) => {
     booking.forEach(booking => {
-    if(booking.userID === currentCustomer.id && booking.roomNumber === room.number) {
-     total += room.costPerNight
-    }
-      });
+      if(booking.userID === currentCustomer.id && booking.roomNumber === room.number) {
+      total += room.costPerNight
+      }
+    });
     return total
   }, 0).toFixed(2);
 };
