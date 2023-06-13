@@ -1,7 +1,5 @@
 * {
-  /* border: solid black 2px; */
   font-family: 'Raleway', sans-serif;
-  /* background-image: url('dist/images/water-image.jpg') */
 }
 
 /* GENERAL */
@@ -9,7 +7,6 @@
 body {
   display:flex;
   flex-direction: column;
-  background: lightcyan
 }
 
 p {
@@ -23,12 +20,10 @@ nav {
   align-items: center;
   justify-content: space-between;
   height: 22vh;
-  /* border-bottom:solid black 2px; */
   background-image: url(/dist/images/joshuatree.jpg); 
   background-size:cover;
   color:white;
-  text-shadow: 0 0 7px black
-  
+  text-shadow: 0 0 7px black 
 }
 
 img {
@@ -44,6 +39,13 @@ img {
     align-items: center;
 }
 
+.customer-name, .total-spent {
+  margin-top:0%;
+  margin-bottom: 1%  
+}
+
+/* MAIN SECTION  */
+
 .book-stay {
   display:flex; 
   text-shadow: 0 0 7px black;
@@ -51,12 +53,6 @@ img {
   font-size: larger;
 }
 
-.customer-name, .total-spent {
-  margin-top:0%;
-  margin-bottom: 1%  
-}
-
-/* MAIN SECTION  */
 .container {
   display: flex;
   align-items: center;
@@ -64,13 +60,20 @@ img {
   height:80vh;
   background-image: url(/dist/images/trees.jpg);
   background-size:cover; 
+}
 
+form{
+  width:60vw;
+  height:30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .all-reservations {
   display: flex;
   flex-direction: column;
- align-items: center;
+  align-items: center;
   height:40vh;
   width:28vw;
   border:black 2px;
@@ -80,15 +83,14 @@ img {
   opacity: 80%;
 }
 
-.individual-reservation-container{
-  height: 7vh; 
-  width:15vw;
+.individual-reservation-container {
+  height: 9vh; 
+  width:18vw;
   border:solid  #eb8f69 2px;
   background-color: #E5a827;
   margin-top: 3%;
- color:white; 
- text-shadow: 0 0 7px black;
-
+  color:white; 
+  text-shadow: 0 0 7px black; 
 }
 
 .filters {
@@ -102,7 +104,6 @@ img {
   opacity: 83%;
   color:white;
   text-shadow: 0 0 7px black
-
 }
 
 .view-all-rooms {
@@ -115,6 +116,7 @@ img {
   overflow-x: hidden; 
   background-size: cover;
 }
+
 .room-display-container {
 display: flex;
 justify-content: center;
@@ -139,14 +141,6 @@ flex-wrap: wrap;
   text-shadow: 0 0 7px black
 }
 
-/* .view-all-rooms {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: solid red 2px;
-
-} */
-
 h1 {
   font-weight: bolder;
   font-size: xx-large;
@@ -167,6 +161,12 @@ h1 {
 
 .reservations-header{
   text-align: center;
+  width:28vw;
+  color:white;
+  text-shadow: 0 0 7px black;
+  background-color: #39675d;
+  opacity: 80%;
+
 }
 
 .view-all-rooms::-webkit-scrollbar, .all-reservations::-webkit-scrollbar {
@@ -186,7 +186,8 @@ h1 {
   visibility: hidden;
 }
 
-/* OTHER */
+/* BUTTONS */
+
 .log-out, .filter-btn, .login-button {
   border-top-right-radius: 250px;
   border-bottom-left-radius: 250px;
@@ -194,10 +195,10 @@ h1 {
   width: 24%;
   margin-top:3%;
   color:white;
-text-shadow: 0 0 7px;
-background-color: #c5d0b2;
-border:white;
-text-shadow: 0 0 7px black
+  text-shadow: 0 0 7px;
+  background-color: #c5d0b2;
+  border:white;
+  text-shadow: 0 0 7px black
 }
 
 .find-button, .book-room{
@@ -218,15 +219,14 @@ text-shadow: 0 0 7px black
   border: solid black 2px;
   height:70vh;
   width: 30vw;
-
 }
 
 h3 {
   font-weight: bolder;
 }
 
-
 /* LOGIN */
+
 .login-container{
   display:flex; 
   flex-direction: column;
@@ -250,9 +250,10 @@ text-shadow: 0 0 7px #F3983C
 }
 
 .login-button {
-  text-shadow: 0 0 7px #F3983C
+  text-shadow: 0 0 7px #F3983C;
+  height:3.5vh;
+  width:7vw;
 }
-
 
 .hidden {
   display:none; 

@@ -11,53 +11,52 @@
 </head>
 <body>
   <div class ="login-page">
-      <div class="login-container">
-        <h1 class="login-header">Welcome to the Overlook Hotel</h1>
-        <form>
+    <div class="login-container">
+      <h1 class="login-header">Welcome to the Overlook Hotel</h1>
+      <form>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" class="username" >
         <label for="password">Password:</label>
         <input type="text" id="password" name="password" class="password">
         <button type="submit" value="login" class="login-button">Login</button>
       </form>
-      </div>
     </div>
+  </div>
   <div class="booking-page hidden">
-  <nav>
-    <h1>Welcome to the Overlook Hotel</h1>
-    <div class="user-info">
-      <img src="./images/cowboy.png" alt="user image: graphic of man in cowboy hat">
-      <p class ='customer-name'>User name</p>
-      <img src="./images/save-money.png"  alt="'graphic of money going into a hand" style="float: left;">
-      <p class="total-spent">You've spent $XX at the Overlook Hotel</p>
-      <button class="log-out">Log Out</button>
-    </div>
-  </nav>
+    <nav>
+      <h1>Welcome to the Overlook Hotel</h1>
+        <div class="user-info">
+          <img src="./images/cowboy.png" alt="user image: graphic of man in cowboy hat">
+          <p class ='customer-name'>User name</p>
+          <img src="./images/save-money.png"  alt="'graphic of money going into a hand" style="float: left;">
+          <p class="total-spent">You've spent $XX at the Overlook Hotel</p>
+          <button class="log-out">Log Out</button>
+        </div>
+    </nav>
   <section class="container">
     <div class="view-book-filter-container">
-    <div class="book-stay">
-      <label for="booking-calendar">Booking Date</label>
-      <input type="date" id='booking-calendar' name="booking-calendar" />
-      <p><button type="submit" class="find-button">Find Bookings</button></p>
-    </div>
-    <section class ="filters hidden">
-      <h3>Filter Rooms</h3>
-       <button class="filter-btn" id="residential-suite">Residential Suite</button>
-       <button class="filter-btn" id="suite">Suite</button>
-       <button class="filter-btn" id="single-room">Single Room</button>
-       <button class="filter-btn" id="junior-suite">Junior Suite</button>
+      <div class="book-stay">
+        <label for="booking-calendar">Booking Date</label>
+        <input type="date" id='booking-calendar' name="booking-calendar" />
+        <p><button type="submit" class="find-button">Find Bookings</button></p>
+      </div>
+  <section class ="filters hidden">
+   <h3>Filter Rooms</h3>
+   <button class="filter-btn" id="residential-suite">Residential Suite</button>
+    <button class="filter-btn" id="suite">Suite</button>
+    <button class="filter-btn" id="single-room">Single Room</button>
+    <button class="filter-btn" id="junior-suite">Junior Suite</button>
    </section>
-    <section class="all-reservations">
-      <div class='all-reservations-container'>
-        <h3 class="reservations-header">Need inspiration ? View all Current and Past Reservations:</h3>
+   <p class="reservations-header">Need inspiration ? View all Current and Past Reservations:</p>
+  <section class="all-reservations">
+    <div class='all-reservations-container'>
     </div>
-    </section>
-   </div>
+  </section>
+  </div>
   <section class="view-all-rooms">
   </section>
   </section>
-  <script src="bundle.js"></script>
-</div>
-
+    <script src="bundle.js"></script>
+  </div>
 </body>
 </html>
