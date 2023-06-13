@@ -23,8 +23,11 @@ nav {
   align-items: center;
   justify-content: space-between;
   height: 22vh;
-  border-bottom:solid black 2px;
-  background-color:  #f5f5f5;
+  /* border-bottom:solid black 2px; */
+  background-image: url(/dist/images/joshuatree.jpg); 
+  background-size:cover;
+  color:white;
+  text-shadow: 0 0 7px black
   
 }
 
@@ -43,6 +46,9 @@ img {
 
 .book-stay {
   display:flex; 
+  text-shadow: 0 0 7px black;
+  color: white;
+  font-size: larger;
 }
 
 .customer-name, .total-spent {
@@ -55,7 +61,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height:80vh
+  height:80vh;
+  background-image: url(/dist/images/trees.jpg);
+  background-size:cover; 
 
 }
 
@@ -66,17 +74,20 @@ img {
   height:40vh;
   width:28vw;
   border:black 2px;
-  background-color: salmon;
+  background-color: #39675d;
   overflow-y: scroll;
   overflow-x: hidden; 
+  opacity: 80%;
 }
 
 .individual-reservation-container{
   height: 7vh; 
   width:15vw;
-  border:solid black 2px;
-  background-color: rgb(150, 246, 241);
+  border:solid  #eb8f69 2px;
+  background-color: #E5a827;
   margin-top: 3%;
+ color:white; 
+ text-shadow: 0 0 7px black;
 
 }
 
@@ -87,7 +98,11 @@ img {
   text-align: center;
   margin-top: 5%;
   margin-bottom: 5%;
-  background-color: azure;
+  background-color: #eb8f69;
+  opacity: 83%;
+  color:white;
+  text-shadow: 0 0 7px black
+
 }
 
 .view-all-rooms {
@@ -98,6 +113,7 @@ img {
   width: 60vw;
   overflow-y: scroll;
   overflow-x: hidden; 
+  background-size: cover;
 }
 .room-display-container {
 display: flex;
@@ -115,8 +131,12 @@ flex-wrap: wrap;
   height: 20vh;
   width: 15vw;
   font-size: small;
-  background-color: lightyellow;
+  background-color: #eb8f69;
   margin-top: 3%;
+  margin-right: 3%;
+  opacity: 83%;
+  color: white;
+  text-shadow: 0 0 7px black
 }
 
 /* .view-all-rooms {
@@ -129,6 +149,7 @@ flex-wrap: wrap;
 
 h1 {
   font-weight: bolder;
+  font-size: xx-large;
 }
 
 .all-reservations-container {
@@ -166,12 +187,27 @@ h1 {
 }
 
 /* OTHER */
-.log-out, .filter-btn {
+.log-out, .filter-btn, .login-button {
   border-top-right-radius: 250px;
   border-bottom-left-radius: 250px;
   height:22%;
   width: 24%;
-  margin-top:3%
+  margin-top:3%;
+  color:white;
+text-shadow: 0 0 7px;
+background-color: #c5d0b2;
+border:white;
+text-shadow: 0 0 7px black
+}
+
+.find-button, .book-room{
+  background-color: #c5d0b2;
+  color:white;
+  text-shadow: 0 0 7px;
+  border:white;
+  border-radius: 80px;
+  height:30px; 
+  text-shadow: 0 0 7px black
 }
 
 .view-book-filter-container{
@@ -190,16 +226,34 @@ h3 {
 }
 
 
-.hidden {
-  display:none; 
-}
-
 /* LOGIN */
 .login-container{
   display:flex; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height:50vh; 
+  height:70vh; 
   width: 100vw;
+}
+
+.login-page {
+  height:100vh;
+  background-image: url(/dist/images/joshuatree.jpg);
+  background-size: cover;
+  color: white;
+  text-shadow: 0 0 7px black
+}
+
+.login-header {
+color:white;
+text-shadow: 0 0 7px #F3983C
+}
+
+.login-button {
+  text-shadow: 0 0 7px #F3983C
+}
+
+
+.hidden {
+  display:none; 
 }
