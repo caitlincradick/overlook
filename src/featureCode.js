@@ -7,8 +7,6 @@
 
 //Functions
 const calculateTotalSpent = (currentCustomer, rooms, booking) => {
-  console.log("currentCUstomer",currentCustomer)
-  
   return rooms.reduce((total, room) => {
     booking.forEach(booking => {
     if(booking.userID === currentCustomer.id && booking.roomNumber === room.number) {
@@ -42,23 +40,10 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
   const unavailRoomNums = filteredRms.map(room => room.roomNumber)
   // console.log('unavailRoomNums', unavailRoomNums)
   const availRooms = rooms.filter(room => !unavailRoomNums.includes(room.number))
-  // console.log('availRooms', availRooms)
+  console.log('availRooms', availRooms)
   return availRooms
 }
-  
 
-// const filterAvailableRooms = (selectedDate, roomType, rooms, bookings) => {
-//   const availableRooms = showAvailableRooms((selectedDate, rooms, bookings))
-//   const filteredRooms = availableRooms.filter(room => room.roomType === roomType)
-//   const filteredArray = filteredRooms.filter((item, index) => filtered.indexOf(item) === index);
-//   console.log("FILTERED DAT SHIT", filteredArray)
-//   return filteredArray
-// }
-
-
-
-
-    
     const getTodayDate = () => {
       let date = new Date().toJSON().slice(0, 10)
       return date
