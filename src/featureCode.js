@@ -42,7 +42,7 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
   const unavailRoomNums = filteredRms.map(room => room.roomNumber)
   // console.log('unavailRoomNums', unavailRoomNums)
   const availRooms = rooms.filter(room => !unavailRoomNums.includes(room.number))
-  // console.log('availRooms', availRooms)
+  console.log('availRooms', availRooms)
   return availRooms
 }
   
@@ -80,11 +80,21 @@ const showAvailableRooms = (selectedDate, rooms, bookings) => {
       return filterArray
     }
 
-  const preventDoubleBooking = (bookings, selectedDate, roomNumber) => {
-    const alreadyBooked = bookings.filter(booking => booking.date === selectedDate)
+  const preventDoubleBooking = (bookings, selectedDate, roomNumber, currentCustomer) => {
+    // console.log('preventBOokings', bookings)
+    const filterUser = bookings.filter(booking => booking.userID === currentCustomer.id)
+    // console.log('filtered USERS', filterUser)
+    // const alreadyBooked = filterUser.filter(booking => booking.date === selectedDate)
+    // const doubleBooked = alreadyBooked.filter(booked => booked.roomNumber === parseInt(roomNumber));
     // console.log('ALREADY BOOKED', alreadyBooked)
-    const doubleBooked = alreadyBooked.filter(booked => booked.roomNumber === parseInt(roomNumber));
     // console.log('DOUBLE BOOKED', doubleBooked)
+    // //slice it off the end
+    // if(doubleBooked.length) {
+    //   bookings.pop()
+    //   // alert('room has already been booked')
+    //   console.log("POP IT", bookings)
+    // }
+    return filterUser
   }
 
   const filterAvailableRooms = (selectedDate, roomType, rooms, booking) => {
@@ -115,8 +125,4 @@ export {
   showAllFilters, 
   formatTodayDate, 
   preventDoubleBooking, 
-
-  // filterAvailableRooms
-
-  // noDuplicates
 }

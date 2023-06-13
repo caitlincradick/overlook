@@ -17,7 +17,7 @@ const postAPI = (userID, date, roomNumber) => {
     headers: { "Content-Type": "application/json"}
   })
     .then(response => response.json())
-    .then(json => json.message)
+    .then(json => console.log(json.message))
     .catch( () => alert("Server is down, please try again later."))
 
 }
