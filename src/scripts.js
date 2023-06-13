@@ -29,11 +29,8 @@ loginButton.addEventListener('click', (event) => {
     customers = data[0].customers;
     rooms = data[1].rooms;
     bookings = data[2].bookings;
-    // loginErrorHandling(passwordInput.value, usernameInput.value, customers[4].id), 
     login(passwordInput.value, usernameInput.value, customers, rooms, bookings)
     showBookings(currentCustomer,rooms, bookings)
-    // displayTotalSpent(customers[4], rooms, bookings)
-    // displayAllBookings(customers[4],rooms, bookings)
     showAllFilters(rooms)
   });
   setCalendarAttributes()
@@ -45,7 +42,7 @@ findBookingsButton.addEventListener('click', () => {
   if(!calendarInput.value){
     alert('Please select a date!')
   } else {
-    displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings)
+    displayAvailableRooms(calendarInput.value.split('-').join('/'),rooms, bookings, currentCustomer)
     showFilterSection()
     displayNoRooms(calendarInput.value.split('-').join('/'), rooms, bookings)
   }
@@ -64,14 +61,18 @@ filterButtons.forEach(filterBtn => {
 
 viewRooms.addEventListener('click', (event) =>  {
   if(event.target.classList.contains('book-room')){
-    const bookingID = event.target.id 
+    const roomNum = event.target.id
     event.target.parentElement.parentElement.remove()
-    // if(preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id, currentCustomer)){
-      //   return alert('NO')
-      // } else {
        console.log(postAPI(currentCustomer.id, calendarInput.value.split('-').join('/'), event.target.id))
         getData()
+       for(let i = 0; i < bookings.length; i++){
+        let booking = bookings[i]
+         alert(`Thank you for booking with us, your confirmation is ${booking.id}`)
+         break
+       }
+      
         // displayAvailableRooms(calendarInput.value.split('-').join('/'), rooms, bookings)
+        displayAllBookings (currentCustomer, rooms, bookings)
         console.log('revent aray', preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id, currentCustomer))
       }
     })

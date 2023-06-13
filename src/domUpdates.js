@@ -67,7 +67,7 @@ totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
 
-const displayAvailableRooms = (selectedDate, rooms, booking) => {
+const displayAvailableRooms = (selectedDate, rooms, booking, currentCustomer) => {
   let today =  getTodayDate()
   if(calendarInput.value < today || calendarInput.value.length > 10){
     viewRooms.innerHTML = ''
@@ -114,6 +114,7 @@ viewRooms.innerHTML += `
 
 const displayAllBookings = (currentCustomer, rooms, booking) => {
 const bookings = showBookings(currentCustomer, rooms, booking)
+bookingsView.innerHTML = ''
 bookings.forEach(book => {
 bookingsView.innerHTML += `
 <div class='individual-reservation-container'>
@@ -174,5 +175,6 @@ export {
   displayNoFilteredRooms, 
   login,
   logOut, 
-  currentCustomer
+  currentCustomer,
+  displayAllBookings
 }
