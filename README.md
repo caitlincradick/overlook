@@ -32,7 +32,7 @@ This is an application to book hotel rooms that allows users to login into their
 </td><td valign="top" width="33%">
 
 ## PREVIEW OF APP 
-
+- User is able to login with a unique username and password 
 
 ## CHALLENGES AND WINS
 - The biggest challenge I faced was managing my time for this project, there was a lot to manage on my own without clearly written iterations like in past projects. Utilizing a project board/ checklist really helped me with this process. 
