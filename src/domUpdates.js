@@ -1,5 +1,4 @@
 import { calculateTotalSpent, showAvailableRooms, showBookings, filterAvailableRooms, getTodayDate } from "./featureCode";
-// import { bookingsTestData, roomsTestData } from './test-data';
 
 //Global Variables
 const customerName = document.querySelector('.customer-name');
@@ -18,6 +17,8 @@ const loginPage = document.querySelector('.login-page');
 const usernameInput = document.querySelector('.username')
 const passwordInput = document.querySelector('.password')
 
+let currentCustomer;
+
 function show(element) {
   element.classList.remove('hidden');
 }
@@ -30,20 +31,10 @@ const showFilterSection = () => {
   show(filters)
 }
 
-
-// const loginErrorHandling = (password, username, customerID) => {
-//   if(!password || !username){
-//     alert('Please fill in username and/or password')
-//   } else if(password !== 'overlook2021') {
-//    alert('Incorrect Password')
-//   } else if (username !== `customer${customerID}`) {
-//     alert('Please correct username')
-//   }
-//    }
-
 const login = (password, username, customers, rooms, bookings) => {
  const userID = username.replace("customer" , "")
   const customersX = customers.find(customer => customer.id === parseInt(userID)) 
+  currentCustomer = customersX
   console.log('CUSTOMERJSDLKFJDS', customersX)
   if(!password || !username){
     alert('Please fill in username and/or password')
@@ -69,22 +60,23 @@ const displayCustomer = (customer) => {
 };
 
 const displayTotalSpent = (currentCustomer, rooms, booking) => {
-  console.log('DISPLAY CURRENT CUSTOMER', currentCustomer)
-  console.log('DISPLAY ROOMS', rooms)
+  // console.log('DISPLAY CURRENT CUSTOMER', currentCustomer)
+  // console.log('DISPLAY ROOMS', rooms)
  let totalAmount =  calculateTotalSpent(currentCustomer, rooms, booking)
-//  console.log('currentCustomer', currentCustomer)
-//  console.log(totalAmount)
 totalSpent.innerText = `You've spent $${totalAmount} at the Overlook Hotel.`
 }
 
-//going to need to have the ID in there for selecting it !!!!!! 
+
 const displayAvailableRooms = (selectedDate, rooms, booking) => {
-// let dateValue = calendarInput.value.split('-').join('/')
-const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
-// console.log('DISPLAYroominfo', roomInfo)
+  let today =  getTodayDate()
+  if(calendarInput.value < today || calendarInput.value.length > 10){
+    viewRooms.innerHTML = ''
+    viewRooms.innerHTML = `<p> ERROR ! Please select a valid date !<p>`
+  } else {
+    const roomInfo = showAvailableRooms (selectedDate, rooms, booking)
+  //  console.log('Display roomInfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
-  // console.log('ROOOOOOOM', room)
 viewRooms.innerHTML += `
 <section class = 'room-display-container'>
 <div class='avail-room-container'>
@@ -99,11 +91,10 @@ viewRooms.innerHTML += `
 `
 })
 }
-
+}
 
 const displayFilteredRooms = (selectedDate, roomType, rooms, booking) => {
 const roomInfo = filterAvailableRooms(selectedDate, roomType, rooms, booking) 
-// console.log('FILTERroominfo', roomInfo)
 viewRooms.innerHTML = ''
 roomInfo.forEach(room => {
 viewRooms.innerHTML += `
@@ -121,9 +112,6 @@ viewRooms.innerHTML += `
 })
 }
 
-
-
-
 const displayAllBookings = (currentCustomer, rooms, booking) => {
 const bookings = showBookings(currentCustomer, rooms, booking)
 bookings.forEach(book => {
@@ -137,11 +125,11 @@ bookingsView.innerHTML += `
 })
 }
 
-
 const setCalendarAttributes = () => {
   let today =  getTodayDate()
   calendarInput.setAttribute("min", today)
 }
+
 
 const displayNoRooms = (selectedDate, rooms, booking) => {
   const roomInfo = showAvailableRooms (selectedDate, rooms, booking) 
@@ -159,39 +147,32 @@ const displayNoFilteredRooms = (selectedDate, roomType, rooms, booking) => {
   }
 }
 
-
-
-
 const logOut = () => {
+  usernameInput.value = ''
+  passwordInput.value = ''
   hide(mainBookingPage)
   show(loginPage)
 }
 
 
 export {
-
   displayCustomer, 
-  // displayTotalSpent, 
   displayAvailableRooms, 
-  displayFilteredRooms, 
-  // displayAllBookings, 
+  displayFilteredRooms,  
   filterButtons, 
   logOutButton, 
   findBookingsButton,
   filters, 
-  setCalendarAttributes,
-  // getInput,  
+  setCalendarAttributes, 
   calendarInput, 
   showFilterSection,
   viewRooms, 
   loginButton, 
-  // showBookingPage, 
   usernameInput, 
   passwordInput, 
-  // loginErrorHandling,
   displayNoRooms, 
   displayNoFilteredRooms, 
   login,
-  logOut
-
+  logOut, 
+  currentCustomer
 }

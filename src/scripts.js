@@ -9,7 +9,7 @@ import './css/styles.css';
 // import {calculateTotalSpent, showBookings } from '../src/featureCode.js';
 // import {customersTestData,bookingsTestData,roomsTestData } from '../src/test-data.js';
 import {savePromises, postAPI, fetchAPI} from './apiCalls';
-import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, usernameInput, passwordInput, loginErrorHandling, displayNoRooms, displayNoFilteredRooms, login, logOut} from './domUpdates';
+import { displayCustomer, displayTotalSpent, displayAvailableRooms, displayAllBookings, filterButtons, findBookingsButton, currentCustomer, setCalendarAttributes, calendarInput, displayFilteredRooms, showFilterSection, viewRooms, logOutButton, loginButton, showBookingPage, usernameInput, passwordInput, loginErrorHandling, displayNoRooms, displayNoFilteredRooms, login, logOut, calendarErrorHandling} from './domUpdates';
 // import { customersTestData, bookingsTestData, roomsTestData } from './test-data';
 import {showAllFilters, showBookings, showAvailableRooms, preventDoubleBooking} from './featureCode';
 
@@ -17,6 +17,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 let customers;
 let rooms;
 let bookings;
+
 
 //function to get data back
 
@@ -30,7 +31,7 @@ loginButton.addEventListener('click', (event) => {
     bookings = data[2].bookings;
     // loginErrorHandling(passwordInput.value, usernameInput.value, customers[4].id), 
     login(passwordInput.value, usernameInput.value, customers, rooms, bookings)
-    showBookings(customers[4],rooms, bookings)
+    showBookings(currentCustomer,rooms, bookings)
     // displayTotalSpent(customers[4], rooms, bookings)
     // displayAllBookings(customers[4],rooms, bookings)
     showAllFilters(rooms)
@@ -38,23 +39,7 @@ loginButton.addEventListener('click', (event) => {
   setCalendarAttributes()
   
 });
-// })
 
-// window.addEventListener('load', () => {
-//   savePromises()
-//   .then(data => {
-//     customers = data[0].customers;
-//     rooms = data[1].rooms;
-//     bookings = data[2].bookings;
-//     displayCustomer(customers[4])
-//     showBookings(customers[4],rooms, bookings)
-//     displayTotalSpent(customers[4], rooms, bookings)
-//     displayAllBookings(customers[4],rooms, bookings)
-//     showAllFilters(rooms)
-//   });
-//   setCalendarAttributes()
-  
-// });
 
 findBookingsButton.addEventListener('click', () => {
   if(!calendarInput.value){
@@ -66,6 +51,8 @@ findBookingsButton.addEventListener('click', () => {
   }
 })
 
+
+
 filterButtons.forEach(filterBtn => {
   filterBtn.addEventListener('click', () => {
     // noDuplicates(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
@@ -74,28 +61,33 @@ filterButtons.forEach(filterBtn => {
   })
 })
 
-const getData = () => {
-  savePromises().then(data => {
-    customers = data[0].customers;
-    // console.log('CUSTERMERS', customers)
-    rooms = data[1].rooms;
-    // console.log('ROOOOOM', rooms)
-    bookings = data[2].bookings;
-    console.log('BOOKINGS BACK', bookings)
-  })
-}
 
 viewRooms.addEventListener('click', (event) =>  {
   if(event.target.classList.contains('book-room')){
     const bookingID = event.target.id 
-    console.log(bookingID)
-    postAPI(customers[4].id, calendarInput.value.split('-').join('/'), event.target.id)
-    getData()
-    preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id)
+    event.target.parentElement.parentElement.remove()
+    // if(preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id, currentCustomer)){
+      //   return alert('NO')
+      // } else {
+       console.log(postAPI(currentCustomer.id, calendarInput.value.split('-').join('/'), event.target.id))
+        getData()
+        // displayAvailableRooms(calendarInput.value.split('-').join('/'), rooms, bookings)
+        console.log('revent aray', preventDoubleBooking(bookings, calendarInput.value.split('-').join('/'), event.target.id, currentCustomer))
+      }
+    })
+    
+    const getData = () => {
+      savePromises().then(data => {
+        customers = data[0].customers;
+        // console.log('CUSTOMERS', customers)
+        rooms = data[1].rooms;
+        // console.log('ROOOOOM', rooms)
+        bookings = data[2].bookings;
+        console.log('BOOKINGS BACK', bookings)
+      })
+    }
     // console.log('AHHHHHHH', bookings)
-  }
-})
-
+    // noDuplicates(calendarInput.value.split('-').join('/'),filterBtn.id.split('-').join(' '), rooms, bookings)
 logOutButton.addEventListener('click', () => {
   logOut()
 })
